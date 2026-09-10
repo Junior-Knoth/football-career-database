@@ -1,6 +1,6 @@
-import { BuildApp } from "./app";
+import { buildApp } from "./app.ts";
 
-const app = BuildApp();
+const app = buildApp();
 
 try {
   await app.listen({

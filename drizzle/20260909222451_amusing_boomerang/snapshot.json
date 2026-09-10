@@ -1,8 +1,8 @@
 {
   "version": "7",
   "dialect": "sqlite",
-  "id": "5d0da6db-1da7-482c-afcd-c2143dc6f4f7",
-  "prevIds": ["00000000-0000-0000-0000-000000000000"],
+  "id": "8546484c-9065-4ece-a4c7-cdc70a18f745",
+  "prevIds": ["5d0da6db-1da7-482c-afcd-c2143dc6f4f7"],
   "ddl": [
     {
       "name": "games",
@@ -67,7 +67,7 @@
       "tableTo": "games",
       "columnsTo": ["id"],
       "onUpdate": "NO ACTION",
-      "onDelete": "CASCADE",
+      "onDelete": "RESTRICT",
       "nameExplicit": false,
       "name": "fk_saves_game_id_games_id_fk",
       "entityType": "fks",
