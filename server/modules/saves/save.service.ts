@@ -43,3 +43,17 @@ export async function listSaves() {
     .innerJoin(games, eq(saves.gameId, games.id))
     .orderBy(asc(saves.name));
 }
+
+export async function getSaveById(id: number) {
+  const [save] = await db
+    .select({
+      id: saves.id,
+      name: saves.name,
+      gameId: saves.gameId,
+    })
+    .from(saves)
+    .where(eq(saves.id, id))
+    .limit(1);
+
+  return save ?? null;
+}
