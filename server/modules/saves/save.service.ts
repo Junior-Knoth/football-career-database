@@ -35,8 +35,8 @@ export async function listSaves() {
       id: saves.id,
       name: saves.name,
       game: {
-        gameId: games.id,
-        gameName: games.name,
+        id: games.id,
+        name: games.name,
       },
     })
     .from(saves)
