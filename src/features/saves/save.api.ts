@@ -5,4 +5,5 @@ export const saveApi = {
   list: () => api.get<Save[]>("/saves"),
   create: (data: CreateSaveInput) =>
     api.post<CreateSaveResponse>("/saves", data),
+  getById: (id: number) => api.get<Save>(`/saves/${id}`),
 };
