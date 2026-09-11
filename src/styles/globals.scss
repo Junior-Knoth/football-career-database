@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;700;800&family=Poppins:wght@500;600;700&display=swap");
+
+:root {
+  --background: linear-gradient(
+    110deg,
+    rgba(42, 123, 155, 1) 0%,
+    rgba(87, 199, 133, 1) 50%,
+    rgba(255, 245, 110, 1) 100%
+  );
+
+  --surface: rgba(255, 255, 255, 0.8);
+  --surface-hover: rgba(255, 255, 255, 0.92);
+  --surface-soft: rgba(255, 255, 255, 0.5);
+
+  --shadow: 0 20px 60px rgba(19, 34, 56, 0.18);
+
+  --border: rgba(255, 255, 255, 0.65);
+  --border-hover: rgba(23, 107, 115, 0.35);
+
+  --text-primary: #132238;
+  --text-secondary: #526174;
+  --text-muted: rgba(19, 34, 56, 0.55);
+
+  --font-size-title: 2.2rem;
+  --font-size-subtitle: 1.5rem;
+  --font-size-body: 1rem;
+  --font-size-small: 0.875rem;
+  --font-size-tiny: 0.75rem;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+
+  --shadow-sm: 0 6px 18px rgba(19, 34, 56, 0.1);
+  --shadow-md: 0 12px 32px rgba(19, 34, 56, 0.14);
+  --shadow-lg: 0 20px 60px rgba(19, 34, 56, 0.18);
+
+  --transition-fast: 150ms ease;
+  --transition-normal: 220ms ease;
+
+  --accent: #176b73;
+  --accent-hover: #10545b;
+
+  --overlay: rgba(0, 0, 0, 0.55);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: var(--text);
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  background: var(--background);
+  margin: 0;
+}

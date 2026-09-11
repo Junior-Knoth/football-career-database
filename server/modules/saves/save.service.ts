@@ -1,6 +1,6 @@
 import { asc, eq } from "drizzle-orm";
 import { db } from "../../db/index.ts";
-import { games, saves } from "../../db/schema.ts";
+import { games as gamesTable, saves as savesTable } from "../../db/schema.ts";
 
 export type CreateSaveInput = {
   name: string;
@@ -13,13 +13,17 @@ export type CreateSaveOutput = {
   gameId: number;
 };
 
+type SaveQuery = {
+  gameId?: string;
+};
+
 export async function createSave(
   input: CreateSaveInput,
 ): Promise<CreateSaveOutput> {
   const name = input.name.trim();
 
   const [inserted] = await db
-    .insert(saves)
+    .insert(savesTable)
     .values({
       name,
       gameId: input.gameId,
@@ -32,32 +36,48 @@ export async function createSave(
 export async function listSaves() {
   return db
     .select({
-      id: saves.id,
-      name: saves.name,
+      id: savesTable.id,
+      name: savesTable.name,
       game: {
-        id: games.id,
-        name: games.name,
+        id: gamesTable.id,
+        name: gamesTable.name,
       },
     })
-    .from(saves)
-    .innerJoin(games, eq(saves.gameId, games.id))
-    .orderBy(asc(saves.name));
+    .from(savesTable)
+    .innerJoin(gamesTable, eq(savesTable.gameId, gamesTable.id))
+    .orderBy(asc(savesTable.name));
 }
 
 export async function getSaveById(id: number) {
   const [save] = await db
     .select({
-      id: saves.id,
-      name: saves.name,
+      id: savesTable.id,
+      name: savesTable.name,
       game: {
-        id: games.id,
-        name: games.name,
+        id: gamesTable.id,
+        name: gamesTable.name,
       },
     })
-    .from(saves)
-    .where(eq(saves.id, id))
-    .innerJoin(games, eq(saves.gameId, games.id))
+    .from(savesTable)
+    .where(eq(savesTable.id, id))
+    .innerJoin(gamesTable, eq(savesTable.gameId, gamesTable.id))
     .limit(1);
 
   return save ?? null;
+}
+
+export async function getSavesByGameId(gameId: number) {
+  return db
+    .select({
+      id: savesTable.id,
+      name: savesTable.name,
+      game: {
+        id: gamesTable.id,
+        name: gamesTable.name,
+      },
+    })
+    .from(savesTable)
+    .where(eq(savesTable.gameId, gameId))
+    .innerJoin(gamesTable, eq(savesTable.gameId, gamesTable.id))
+    .orderBy(asc(savesTable.name));
 }

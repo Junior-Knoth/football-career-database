@@ -1,0 +1,47 @@
+@use "../styles/globals.scss";
+
+.container {
+  margin: 0 auto;
+
+  height: 100vh;
+  max-width: 600px;
+
+  display: flex;
+  align-items: center;
+}
+
+.content {
+  width: min(600px, calc(100% - 40px));
+  max-height: 75vh;
+
+  padding: 2.5rem;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+
+  box-shadow: var(--shadow-lg);
+
+  overflow-y: hidden;
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.title {
+  text-align: center;
+  margin: 0;
+
+  font-size: var(--font-size-title);
+  font-weight: bolder;
+
+  color: var(--text-primary);
+  letter-spacing: -0.04em;
+}
+
+.subtitle {
+  font-size: var(--font-size-subtitle);
+  color: var(--text-primary);
+  text-align: center;
+}

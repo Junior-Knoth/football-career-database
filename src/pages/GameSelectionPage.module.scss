@@ -1,0 +1,96 @@
+@use "../styles/globals.scss";
+
+.container {
+  margin: 0 auto;
+
+  height: 100vh;
+  max-width: 600px;
+
+  display: flex;
+  align-items: center;
+}
+
+.content {
+  width: min(600px, calc(100% - 40px));
+  max-height: 75vh;
+
+  padding: 2.5rem;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+
+  box-shadow: var(--shadow-lg);
+
+  overflow-y: hidden;
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.title {
+  text-align: center;
+  margin: 0;
+
+  font-size: var(--font-size-title);
+  font-weight: bolder;
+
+  color: var(--text-primary);
+  letter-spacing: -0.04em;
+}
+
+.subtitle {
+  font-size: var(--font-size-subtitle);
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.gameList {
+  list-style: none;
+  margin: 2rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.gameCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+
+  box-shadow: var(--shadow-sm);
+
+  padding: 1rem 1.2rem;
+
+  background: rgba(255, 255, 255, 0.5);
+
+  border: 1px solid rgba(19, 34, 56, 0.08);
+  border-radius: var(--radius-md);
+
+  color: var(--text-primary);
+
+  cursor: pointer;
+
+  transition:
+    transform 150ms ease,
+    background 150ms ease,
+    box-shadow 150ms ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.selectButton {
+  background: none;
+  outline: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.5rem;
+}

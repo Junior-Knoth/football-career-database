@@ -1,13 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;700;800&family=Poppins:wght@500;600;700&display=swap");
-
-* {
-  font-family: "Plus Jakarta Sans", sans-serif; /* Fonte padrão para o texto */
-}
-
-:root {
-  font-family: "Chakra Petch", sans-serif; /* Fonte padrão para o texto */
-
-  color: #0a192f;
+/* * {
 }
 
 .app {
@@ -21,3 +12,7 @@
   );
   font-family: "Chakra Petch", sans-serif;
 }
+
+div {
+  color: red;
+} */
