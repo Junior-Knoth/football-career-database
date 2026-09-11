@@ -29,7 +29,11 @@ export const saveRoutes: FastifyPluginAsync = async (app) => {
       return reply.code(400).send({ error: "Invalid save ID" });
     }
 
-    const save = getSaveById(id);
+    if (isNaN(id)) {
+      return reply.code(400).send({ error: "Invalid save ID" });
+    }
+
+    const save = await getSaveById(id);
 
     if (!save) {
       return reply.code(404).send({ error: "Save not found" });

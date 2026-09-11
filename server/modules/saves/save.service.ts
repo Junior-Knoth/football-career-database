@@ -49,10 +49,14 @@ export async function getSaveById(id: number) {
     .select({
       id: saves.id,
       name: saves.name,
-      gameId: saves.gameId,
+      game: {
+        id: games.id,
+        name: games.name,
+      },
     })
     .from(saves)
     .where(eq(saves.id, id))
+    .innerJoin(games, eq(saves.gameId, games.id))
     .limit(1);
 
   return save ?? null;
