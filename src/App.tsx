@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import SavePage from "./pages/SavePage";
+import SavePage from "./pages/SaveOverviewPage";
 import GameSelectionPage from "./pages/GameSelectionPage";
 import SaveSelectionPage from "./pages/SaveSelectionPage";
 

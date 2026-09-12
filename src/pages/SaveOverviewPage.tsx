@@ -14,7 +14,7 @@ export default function SavePage() {
   const id = saveId ? parseInt(saveId, 10) : null;
 
   useEffect(() => {
-    async function fetchSave() {
+    async function loadSave() {
       try {
         setLoading(true);
 
@@ -36,8 +36,7 @@ export default function SavePage() {
         setLoading(false);
       }
     }
-
-    fetchSave();
+    loadSave();
   }, [id]);
 
   return (

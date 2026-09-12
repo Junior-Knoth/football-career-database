@@ -81,6 +81,9 @@
   padding: 0;
   margin: 0;
 
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+
   &:focus {
     outline: none;
   }

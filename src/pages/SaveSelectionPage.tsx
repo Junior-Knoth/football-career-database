@@ -44,6 +44,8 @@ export default function SaveSelectionPage() {
         setSaves((prevSaves) => [...prevSaves, createdSave]);
         setNewSaveName("");
 
+        setIsCreatingSave(false);
+
         console.log(saves);
       }
     } catch (err) {
