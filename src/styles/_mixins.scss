@@ -1,0 +1,39 @@
+@mixin interactive-card {
+  padding: 1rem 1.2rem;
+
+  background: var(--surface-soft);
+  border-radius: var(--radius-md);
+
+  box-shadow: var(--shadow-sm);
+
+  color: var(--text-primary);
+  text-decoration: none;
+  cursor: pointer;
+
+  transition: all var(--transition-fast);
+
+  &:hover {
+    transform: translateY(-2px);
+
+    background: var(--surface-hover);
+
+    box-shadow: var(--shadow-md);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3x;
+  }
+}
+
+@mixin glass-panel {
+  padding: 2.5rem;
+
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+
+  box-shadow: var(--shadow-lg);
+
+  backdrop-filter: blur(18px);
+}

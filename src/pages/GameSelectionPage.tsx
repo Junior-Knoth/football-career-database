@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { gameApi } from "../features/games/game.api";
 import styles from "./GameSelectionPage.module.scss";
 import { useEffect, useState } from "react";
@@ -14,9 +14,6 @@ export default function GameSelectionPage() {
   const [saves, setSaves] = useState<Save[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
-  const { gameId } = useParams();
-  const selectedGameId = gameId ? parseInt(gameId, 10) : null;
 
   useEffect(() => {
     async function loadGames() {
@@ -52,9 +49,9 @@ export default function GameSelectionPage() {
         <h1 className={styles.title}>Football Career Tracker</h1>
         <h3 className={styles.subtitle}>Choose a game</h3>
         {loading ? (
-          <p>Loading...</p>
+          <p>Carregando...</p>
         ) : error ? (
-          <p>Error: {error}</p>
+          <p>Erro: {error}</p>
         ) : games.length !== 0 ? (
           <ul className={styles.gameList}>
             {games.map((game) => (
@@ -64,16 +61,16 @@ export default function GameSelectionPage() {
                     <h4>{game.name}</h4>
                     <p>
                       {saves.filter((save) => save.game.id === game.id).length}{" "}
-                      Careers
+                      Carreiras
                     </p>
                   </div>
-                  <LogIn className={styles.lucide} />
+                  <LogIn className={styles.icon} />
                 </Link>
               </li>
             ))}
           </ul>
         ) : (
-          <p>No games available</p>
+          <p>Sem jogos disponíveis</p>
         )}
       </div>
     </div>

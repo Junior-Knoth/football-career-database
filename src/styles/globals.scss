@@ -12,10 +12,9 @@
   --surface-hover: rgba(255, 255, 255, 0.92);
   --surface-soft: rgba(255, 255, 255, 0.5);
 
-  --shadow: 0 20px 60px rgba(19, 34, 56, 0.18);
-
   --border: rgba(255, 255, 255, 0.65);
   --border-hover: rgba(23, 107, 115, 0.35);
+  --border-subtle: rgba(19, 34, 56, 0.1);
 
   --text-primary: #132238;
   --text-secondary: #526174;
@@ -48,6 +47,31 @@
   --accent-hover: #10545b;
 
   --overlay: rgba(0, 0, 0, 0.55);
+
+  --success: #32b875; /* Verde mais claro e vibrante */
+  --success-hover: #299e63; /* Ligeiramente mais escuro para o hover */
+  --surface-success: rgba(50, 184, 117, 0.15); /* Fundo sutil */
+  --text-on-success: #ffffff; /* Texto branco para botões sólidos */
+  --text-success: #1b633f;
+
+  --danger: #ef5350;
+  --text-on-danger: #ffffff;
+  --danger-hover: #c4413d;
+  --surface-danger: rgba(217, 83, 79, 0.12);
+
+  --warning: #f59e0b;
+  --text-on-warning: #ffffff;
+  --warning-hover: #c48600;
+  --surface-warning: rgba(230, 157, 0, 0.12);
+
+  --info: #176b73;
+  --text-on-info: #ffffff;
+  --info-hover: #10545b;
+  --surface-info: rgba(23, 107, 115, 0.12);
+
+  --neutral-action: #6b7c93;
+  --neutral-action-hover: #526174;
+  --surface-neutral: rgba(107, 124, 147, 0.12);
 }
 
 * {
@@ -56,6 +80,10 @@
   color: var(--text);
   padding: 0;
   margin: 0;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 html,

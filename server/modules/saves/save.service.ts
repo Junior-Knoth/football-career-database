@@ -13,13 +13,16 @@ export type CreateSaveOutput = {
   gameId: number;
 };
 
-type SaveQuery = {
-  gameId?: string;
+type Save = {
+  id: number;
+  name: string;
+  game: {
+    id: number;
+    name: string;
+  };
 };
 
-export async function createSave(
-  input: CreateSaveInput,
-): Promise<CreateSaveOutput> {
+export async function createSave(input: CreateSaveInput): Promise<Save> {
   const name = input.name.trim();
 
   const [inserted] = await db
@@ -28,9 +31,11 @@ export async function createSave(
       name,
       gameId: input.gameId,
     })
-    .returning();
+    .returning({ id: savesTable.id });
 
-  return inserted;
+  const fullSave = await getSaveById(inserted.id);
+
+  return fullSave;
 }
 
 export async function listSaves() {

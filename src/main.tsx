@@ -1,5 +1,5 @@
 import { createRoot } from "react-dom/client";
-import "./index.css";
+import "./styles/globals.scss";
 import App from "./App.tsx";
 import { BrowserRouter } from "react-router-dom";
 

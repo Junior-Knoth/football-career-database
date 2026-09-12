@@ -19,7 +19,7 @@ export const gameRoutes: FastifyPluginAsync = async (app) => {
       return reply.code(400).send({ error: "Invalid game ID" });
     }
 
-    const game = await getGameById(id);
+    const [game] = await getGameById(id);
 
     if (!game) {
       return reply.code(404).send({ error: "Game not found" });
