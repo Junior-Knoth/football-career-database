@@ -1,0 +1,2086 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "id": "929094ed-b0e1-4289-a355-812c0b9205e3",
+  "prevIds": [
+    "00000000-0000-0000-0000-000000000000"
+  ],
+  "ddl": [
+    {
+      "name": "competitions",
+      "entityType": "tables"
+    },
+    {
+      "name": "contracts",
+      "entityType": "tables"
+    },
+    {
+      "name": "countries",
+      "entityType": "tables"
+    },
+    {
+      "name": "games",
+      "entityType": "tables"
+    },
+    {
+      "name": "honours",
+      "entityType": "tables"
+    },
+    {
+      "name": "manager_assignments",
+      "entityType": "tables"
+    },
+    {
+      "name": "player_career_events",
+      "entityType": "tables"
+    },
+    {
+      "name": "player_season_positions",
+      "entityType": "tables"
+    },
+    {
+      "name": "player_season_stats",
+      "entityType": "tables"
+    },
+    {
+      "name": "player_seasons",
+      "entityType": "tables"
+    },
+    {
+      "name": "player_updates",
+      "entityType": "tables"
+    },
+    {
+      "name": "players",
+      "entityType": "tables"
+    },
+    {
+      "name": "positions",
+      "entityType": "tables"
+    },
+    {
+      "name": "save_players",
+      "entityType": "tables"
+    },
+    {
+      "name": "save_teams",
+      "entityType": "tables"
+    },
+    {
+      "name": "saves",
+      "entityType": "tables"
+    },
+    {
+      "name": "seasons",
+      "entityType": "tables"
+    },
+    {
+      "name": "stat_types",
+      "entityType": "tables"
+    },
+    {
+      "name": "teams",
+      "entityType": "tables"
+    },
+    {
+      "name": "transfers",
+      "entityType": "tables"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "competitions"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "name",
+      "entityType": "columns",
+      "table": "competitions"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "short_name",
+      "entityType": "columns",
+      "table": "competitions"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "short_code",
+      "entityType": "columns",
+      "table": "competitions"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "country_id",
+      "entityType": "columns",
+      "table": "competitions"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "type",
+      "entityType": "columns",
+      "table": "competitions"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "scope",
+      "entityType": "columns",
+      "table": "competitions"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "contracts"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "save_player_id",
+      "entityType": "columns",
+      "table": "contracts"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "save_team_id",
+      "entityType": "columns",
+      "table": "contracts"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "start_season_id",
+      "entityType": "columns",
+      "table": "contracts"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "end_season_id",
+      "entityType": "columns",
+      "table": "contracts"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "weekly_salary",
+      "entityType": "columns",
+      "table": "contracts"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "currency",
+      "entityType": "columns",
+      "table": "contracts"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "signed_date",
+      "entityType": "columns",
+      "table": "contracts"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "countries"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "name",
+      "entityType": "columns",
+      "table": "countries"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "flag_code",
+      "entityType": "columns",
+      "table": "countries"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "short_code",
+      "entityType": "columns",
+      "table": "countries"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "games"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "name",
+      "entityType": "columns",
+      "table": "games"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "honours"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "name",
+      "entityType": "columns",
+      "table": "honours"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "save_id",
+      "entityType": "columns",
+      "table": "honours"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "season_id",
+      "entityType": "columns",
+      "table": "honours"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "type",
+      "entityType": "columns",
+      "table": "honours"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "competition_id",
+      "entityType": "columns",
+      "table": "honours"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "save_player_id",
+      "entityType": "columns",
+      "table": "honours"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "save_team_id",
+      "entityType": "columns",
+      "table": "honours"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "manager_assignments"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "save_id",
+      "entityType": "columns",
+      "table": "manager_assignments"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "save_team_id",
+      "entityType": "columns",
+      "table": "manager_assignments"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "start_season_id",
+      "entityType": "columns",
+      "table": "manager_assignments"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "end_season_id",
+      "entityType": "columns",
+      "table": "manager_assignments"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "start_date",
+      "entityType": "columns",
+      "table": "manager_assignments"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "end_date",
+      "entityType": "columns",
+      "table": "manager_assignments"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "player_career_events"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "save_player_id",
+      "entityType": "columns",
+      "table": "player_career_events"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "season_id",
+      "entityType": "columns",
+      "table": "player_career_events"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "event_type",
+      "entityType": "columns",
+      "table": "player_career_events"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "event_date",
+      "entityType": "columns",
+      "table": "player_career_events"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "save_team_id",
+      "entityType": "columns",
+      "table": "player_career_events"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "player_season_positions"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "player_season_id",
+      "entityType": "columns",
+      "table": "player_season_positions"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "position_id",
+      "entityType": "columns",
+      "table": "player_season_positions"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "priority",
+      "entityType": "columns",
+      "table": "player_season_positions"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "player_season_stats"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "player_season_id",
+      "entityType": "columns",
+      "table": "player_season_stats"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "stat_type_id",
+      "entityType": "columns",
+      "table": "player_season_stats"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "competition_id",
+      "entityType": "columns",
+      "table": "player_season_stats"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "value",
+      "entityType": "columns",
+      "table": "player_season_stats"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "player_seasons"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "save_player_id",
+      "entityType": "columns",
+      "table": "player_seasons"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "season_id",
+      "entityType": "columns",
+      "table": "player_seasons"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "save_team_id",
+      "entityType": "columns",
+      "table": "player_seasons"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "player_updates"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "save_player_id",
+      "entityType": "columns",
+      "table": "player_updates"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "season_id",
+      "entityType": "columns",
+      "table": "player_updates"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "effective_date",
+      "entityType": "columns",
+      "table": "player_updates"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "order_index",
+      "entityType": "columns",
+      "table": "player_updates"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "overall",
+      "entityType": "columns",
+      "table": "player_updates"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "shirt_number",
+      "entityType": "columns",
+      "table": "player_updates"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "shirt_name",
+      "entityType": "columns",
+      "table": "player_updates"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "players"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "name",
+      "entityType": "columns",
+      "table": "players"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "birth_date",
+      "entityType": "columns",
+      "table": "players"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "nationality_id",
+      "entityType": "columns",
+      "table": "players"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "preferred_foot",
+      "entityType": "columns",
+      "table": "players"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "type",
+      "entityType": "columns",
+      "table": "players"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "height_cm",
+      "entityType": "columns",
+      "table": "players"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "weight_kg",
+      "entityType": "columns",
+      "table": "players"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "positions"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "key",
+      "entityType": "columns",
+      "table": "positions"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "name",
+      "entityType": "columns",
+      "table": "positions"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "category",
+      "entityType": "columns",
+      "table": "positions"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "save_players"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "save_id",
+      "entityType": "columns",
+      "table": "save_players"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "player_id",
+      "entityType": "columns",
+      "table": "save_players"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "save_teams"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "save_id",
+      "entityType": "columns",
+      "table": "save_teams"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "team_id",
+      "entityType": "columns",
+      "table": "save_teams"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "saves"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "name",
+      "entityType": "columns",
+      "table": "saves"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "game_id",
+      "entityType": "columns",
+      "table": "saves"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "status",
+      "entityType": "columns",
+      "table": "saves"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "current_season_id",
+      "entityType": "columns",
+      "table": "saves"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "manager_name",
+      "entityType": "columns",
+      "table": "saves"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "manager_birth_date",
+      "entityType": "columns",
+      "table": "saves"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "manager_nationality_id",
+      "entityType": "columns",
+      "table": "saves"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "seasons"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "save_id",
+      "entityType": "columns",
+      "table": "seasons"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "label",
+      "entityType": "columns",
+      "table": "seasons"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "start_date",
+      "entityType": "columns",
+      "table": "seasons"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "end_date",
+      "entityType": "columns",
+      "table": "seasons"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "order_index",
+      "entityType": "columns",
+      "table": "seasons"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "stat_types"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "key",
+      "entityType": "columns",
+      "table": "stat_types"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "name",
+      "entityType": "columns",
+      "table": "stat_types"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "teams"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "name",
+      "entityType": "columns",
+      "table": "teams"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "short_name",
+      "entityType": "columns",
+      "table": "teams"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "short_code",
+      "entityType": "columns",
+      "table": "teams"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "type",
+      "entityType": "columns",
+      "table": "teams"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "country_id",
+      "entityType": "columns",
+      "table": "teams"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "transfers"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "save_player_id",
+      "entityType": "columns",
+      "table": "transfers"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "season_id",
+      "entityType": "columns",
+      "table": "transfers"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "from_save_team_id",
+      "entityType": "columns",
+      "table": "transfers"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "to_save_team_id",
+      "entityType": "columns",
+      "table": "transfers"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "type",
+      "entityType": "columns",
+      "table": "transfers"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "fee",
+      "entityType": "columns",
+      "table": "transfers"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "currency",
+      "entityType": "columns",
+      "table": "transfers"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "event_date",
+      "entityType": "columns",
+      "table": "transfers"
+    },
+    {
+      "columns": [
+        "country_id"
+      ],
+      "tableTo": "countries",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_competitions_country_id_countries_id_fk",
+      "entityType": "fks",
+      "table": "competitions"
+    },
+    {
+      "columns": [
+        "save_player_id"
+      ],
+      "tableTo": "save_players",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_contracts_save_player_id_save_players_id_fk",
+      "entityType": "fks",
+      "table": "contracts"
+    },
+    {
+      "columns": [
+        "save_team_id"
+      ],
+      "tableTo": "save_teams",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_contracts_save_team_id_save_teams_id_fk",
+      "entityType": "fks",
+      "table": "contracts"
+    },
+    {
+      "columns": [
+        "start_season_id"
+      ],
+      "tableTo": "seasons",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_contracts_start_season_id_seasons_id_fk",
+      "entityType": "fks",
+      "table": "contracts"
+    },
+    {
+      "columns": [
+        "end_season_id"
+      ],
+      "tableTo": "seasons",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_contracts_end_season_id_seasons_id_fk",
+      "entityType": "fks",
+      "table": "contracts"
+    },
+    {
+      "columns": [
+        "save_id"
+      ],
+      "tableTo": "saves",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_honours_save_id_saves_id_fk",
+      "entityType": "fks",
+      "table": "honours"
+    },
+    {
+      "columns": [
+        "season_id"
+      ],
+      "tableTo": "seasons",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_honours_season_id_seasons_id_fk",
+      "entityType": "fks",
+      "table": "honours"
+    },
+    {
+      "columns": [
+        "competition_id"
+      ],
+      "tableTo": "competitions",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_honours_competition_id_competitions_id_fk",
+      "entityType": "fks",
+      "table": "honours"
+    },
+    {
+      "columns": [
+        "save_player_id"
+      ],
+      "tableTo": "save_players",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_honours_save_player_id_save_players_id_fk",
+      "entityType": "fks",
+      "table": "honours"
+    },
+    {
+      "columns": [
+        "save_team_id"
+      ],
+      "tableTo": "save_teams",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_honours_save_team_id_save_teams_id_fk",
+      "entityType": "fks",
+      "table": "honours"
+    },
+    {
+      "columns": [
+        "save_id"
+      ],
+      "tableTo": "saves",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_manager_assignments_save_id_saves_id_fk",
+      "entityType": "fks",
+      "table": "manager_assignments"
+    },
+    {
+      "columns": [
+        "save_team_id"
+      ],
+      "tableTo": "save_teams",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_manager_assignments_save_team_id_save_teams_id_fk",
+      "entityType": "fks",
+      "table": "manager_assignments"
+    },
+    {
+      "columns": [
+        "start_season_id"
+      ],
+      "tableTo": "seasons",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_manager_assignments_start_season_id_seasons_id_fk",
+      "entityType": "fks",
+      "table": "manager_assignments"
+    },
+    {
+      "columns": [
+        "end_season_id"
+      ],
+      "tableTo": "seasons",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_manager_assignments_end_season_id_seasons_id_fk",
+      "entityType": "fks",
+      "table": "manager_assignments"
+    },
+    {
+      "columns": [
+        "save_player_id"
+      ],
+      "tableTo": "save_players",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_player_career_events_save_player_id_save_players_id_fk",
+      "entityType": "fks",
+      "table": "player_career_events"
+    },
+    {
+      "columns": [
+        "season_id"
+      ],
+      "tableTo": "seasons",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_player_career_events_season_id_seasons_id_fk",
+      "entityType": "fks",
+      "table": "player_career_events"
+    },
+    {
+      "columns": [
+        "save_team_id"
+      ],
+      "tableTo": "save_teams",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_player_career_events_save_team_id_save_teams_id_fk",
+      "entityType": "fks",
+      "table": "player_career_events"
+    },
+    {
+      "columns": [
+        "player_season_id"
+      ],
+      "tableTo": "player_seasons",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_player_season_positions_player_season_id_player_seasons_id_fk",
+      "entityType": "fks",
+      "table": "player_season_positions"
+    },
+    {
+      "columns": [
+        "position_id"
+      ],
+      "tableTo": "positions",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_player_season_positions_position_id_positions_id_fk",
+      "entityType": "fks",
+      "table": "player_season_positions"
+    },
+    {
+      "columns": [
+        "player_season_id"
+      ],
+      "tableTo": "player_seasons",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_player_season_stats_player_season_id_player_seasons_id_fk",
+      "entityType": "fks",
+      "table": "player_season_stats"
+    },
+    {
+      "columns": [
+        "stat_type_id"
+      ],
+      "tableTo": "stat_types",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_player_season_stats_stat_type_id_stat_types_id_fk",
+      "entityType": "fks",
+      "table": "player_season_stats"
+    },
+    {
+      "columns": [
+        "competition_id"
+      ],
+      "tableTo": "competitions",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_player_season_stats_competition_id_competitions_id_fk",
+      "entityType": "fks",
+      "table": "player_season_stats"
+    },
+    {
+      "columns": [
+        "save_player_id"
+      ],
+      "tableTo": "save_players",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_player_seasons_save_player_id_save_players_id_fk",
+      "entityType": "fks",
+      "table": "player_seasons"
+    },
+    {
+      "columns": [
+        "season_id"
+      ],
+      "tableTo": "seasons",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_player_seasons_season_id_seasons_id_fk",
+      "entityType": "fks",
+      "table": "player_seasons"
+    },
+    {
+      "columns": [
+        "save_team_id"
+      ],
+      "tableTo": "save_teams",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_player_seasons_save_team_id_save_teams_id_fk",
+      "entityType": "fks",
+      "table": "player_seasons"
+    },
+    {
+      "columns": [
+        "save_player_id"
+      ],
+      "tableTo": "save_players",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_player_updates_save_player_id_save_players_id_fk",
+      "entityType": "fks",
+      "table": "player_updates"
+    },
+    {
+      "columns": [
+        "season_id"
+      ],
+      "tableTo": "seasons",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_player_updates_season_id_seasons_id_fk",
+      "entityType": "fks",
+      "table": "player_updates"
+    },
+    {
+      "columns": [
+        "nationality_id"
+      ],
+      "tableTo": "countries",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_players_nationality_id_countries_id_fk",
+      "entityType": "fks",
+      "table": "players"
+    },
+    {
+      "columns": [
+        "save_id"
+      ],
+      "tableTo": "saves",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_save_players_save_id_saves_id_fk",
+      "entityType": "fks",
+      "table": "save_players"
+    },
+    {
+      "columns": [
+        "player_id"
+      ],
+      "tableTo": "players",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_save_players_player_id_players_id_fk",
+      "entityType": "fks",
+      "table": "save_players"
+    },
+    {
+      "columns": [
+        "save_id"
+      ],
+      "tableTo": "saves",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_save_teams_save_id_saves_id_fk",
+      "entityType": "fks",
+      "table": "save_teams"
+    },
+    {
+      "columns": [
+        "team_id"
+      ],
+      "tableTo": "teams",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_save_teams_team_id_teams_id_fk",
+      "entityType": "fks",
+      "table": "save_teams"
+    },
+    {
+      "columns": [
+        "game_id"
+      ],
+      "tableTo": "games",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_saves_game_id_games_id_fk",
+      "entityType": "fks",
+      "table": "saves"
+    },
+    {
+      "columns": [
+        "manager_nationality_id"
+      ],
+      "tableTo": "countries",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_saves_manager_nationality_id_countries_id_fk",
+      "entityType": "fks",
+      "table": "saves"
+    },
+    {
+      "columns": [
+        "save_id"
+      ],
+      "tableTo": "saves",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_seasons_save_id_saves_id_fk",
+      "entityType": "fks",
+      "table": "seasons"
+    },
+    {
+      "columns": [
+        "country_id"
+      ],
+      "tableTo": "countries",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_teams_country_id_countries_id_fk",
+      "entityType": "fks",
+      "table": "teams"
+    },
+    {
+      "columns": [
+        "save_player_id"
+      ],
+      "tableTo": "save_players",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_transfers_save_player_id_save_players_id_fk",
+      "entityType": "fks",
+      "table": "transfers"
+    },
+    {
+      "columns": [
+        "season_id"
+      ],
+      "tableTo": "seasons",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_transfers_season_id_seasons_id_fk",
+      "entityType": "fks",
+      "table": "transfers"
+    },
+    {
+      "columns": [
+        "from_save_team_id"
+      ],
+      "tableTo": "save_teams",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_transfers_from_save_team_id_save_teams_id_fk",
+      "entityType": "fks",
+      "table": "transfers"
+    },
+    {
+      "columns": [
+        "to_save_team_id"
+      ],
+      "tableTo": "save_teams",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_transfers_to_save_team_id_save_teams_id_fk",
+      "entityType": "fks",
+      "table": "transfers"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "competitions_pk",
+      "table": "competitions",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "contracts_pk",
+      "table": "contracts",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "countries_pk",
+      "table": "countries",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "games_pk",
+      "table": "games",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "honours_pk",
+      "table": "honours",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "manager_assignments_pk",
+      "table": "manager_assignments",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "player_career_events_pk",
+      "table": "player_career_events",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "player_season_positions_pk",
+      "table": "player_season_positions",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "player_season_stats_pk",
+      "table": "player_season_stats",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "player_seasons_pk",
+      "table": "player_seasons",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "player_updates_pk",
+      "table": "player_updates",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "players_pk",
+      "table": "players",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "positions_pk",
+      "table": "positions",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "save_players_pk",
+      "table": "save_players",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "save_teams_pk",
+      "table": "save_teams",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "saves_pk",
+      "table": "saves",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "seasons_pk",
+      "table": "seasons",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "stat_types_pk",
+      "table": "stat_types",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "teams_pk",
+      "table": "teams",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "transfers_pk",
+      "table": "transfers",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "save_player_id",
+        "season_id"
+      ],
+      "nameExplicit": true,
+      "name": "player_seasons_save_player_id_season_id_unique",
+      "entityType": "uniques",
+      "table": "player_seasons"
+    },
+    {
+      "columns": [
+        "save_id",
+        "player_id"
+      ],
+      "nameExplicit": true,
+      "name": "save_players_save_id_player_id_unique",
+      "entityType": "uniques",
+      "table": "save_players"
+    },
+    {
+      "columns": [
+        "save_id",
+        "team_id"
+      ],
+      "nameExplicit": true,
+      "name": "save_teams_save_id_team_id_unique",
+      "entityType": "uniques",
+      "table": "save_teams"
+    },
+    {
+      "columns": [
+        "save_id",
+        "label"
+      ],
+      "nameExplicit": true,
+      "name": "seasons_save_id_label_unique",
+      "entityType": "uniques",
+      "table": "seasons"
+    },
+    {
+      "columns": [
+        "name"
+      ],
+      "nameExplicit": false,
+      "name": "countries_name_unique",
+      "entityType": "uniques",
+      "table": "countries"
+    },
+    {
+      "columns": [
+        "flag_code"
+      ],
+      "nameExplicit": false,
+      "name": "countries_flag_code_unique",
+      "entityType": "uniques",
+      "table": "countries"
+    },
+    {
+      "columns": [
+        "short_code"
+      ],
+      "nameExplicit": false,
+      "name": "countries_short_code_unique",
+      "entityType": "uniques",
+      "table": "countries"
+    },
+    {
+      "columns": [
+        "name"
+      ],
+      "nameExplicit": false,
+      "name": "games_name_unique",
+      "entityType": "uniques",
+      "table": "games"
+    },
+    {
+      "columns": [
+        "key"
+      ],
+      "nameExplicit": false,
+      "name": "stat_types_key_unique",
+      "entityType": "uniques",
+      "table": "stat_types"
+    }
+  ],
+  "renames": []
+}

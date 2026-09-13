@@ -45,8 +45,6 @@ export default function SaveSelectionPage() {
         setNewSaveName("");
 
         setIsCreatingSave(false);
-
-        console.log(saves);
       }
     } catch (err) {
       console.error("Error creating new save:", err);
@@ -62,7 +60,6 @@ export default function SaveSelectionPage() {
       if (!gameData) {
         setError("Game not found");
       } else {
-        console.log("Game data:", gameData);
         setGame(gameData);
       }
 
@@ -101,9 +98,7 @@ export default function SaveSelectionPage() {
         <h3 className={styles.subtitle}>Escolha uma carreira</h3>
         {loading ? (
           <p>Loading...</p>
-        ) : error ? (
-          <p>Error: {error}</p>
-        ) : saves.length !== 0 ? (
+        ) : (
           <ul className={styles.saveList}>
             {saves.map((save) => (
               <li key={save.id}>
@@ -117,54 +112,18 @@ export default function SaveSelectionPage() {
               </li>
             ))}
             <li>
-              {isCreatingSave ? (
-                <div className={`${styles.saveCard} ${styles.createSaveCard}`}>
-                  <form
-                    id="createNewSaveForm"
-                    className={styles.createSaveForm}
-                    onSubmit={handleNewSaveSubmit}
-                  >
-                    <label htmlFor="saveName">Nome:</label>
-                    <input
-                      type="text"
-                      id="saveName"
-                      name="saveName"
-                      className={styles.saveNameInput}
-                      onChange={(e) => setNewSaveName(e.target.value)}
-                    />
-                  </form>
-                  <div className={styles.saveActions}>
-                    <button
-                      type="submit"
-                      form="createNewSaveForm"
-                      className={styles.saveButton}
-                    >
-                      Salvar
-                    </button>
-                    <button
-                      form="createNewSaveForm"
-                      onClick={() => setIsCreatingSave(false)}
-                      className={styles.cancelButton}
-                    >
-                      Cancelar
-                    </button>
-                  </div>
-                </div>
-              ) : (
+              <Link to={`/games/${id}/create-save`}>
                 <div
                   role="button"
                   tabIndex={0}
                   className={styles.newSaveCard}
                   onClick={() => setIsCreatingSave(true)}
                 >
-                  {/* Quando não há novo save: */}
                   Nova carreira
                 </div>
-              )}
+              </Link>
             </li>
           </ul>
-        ) : (
-          <p>Nenhuma carreira encontrada.</p>
         )}
       </div>
     </div>

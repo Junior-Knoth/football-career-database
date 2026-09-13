@@ -1,0 +1,19 @@
+@use "../styles/mixins";
+
+.container {
+  min-height: 100dvh;
+  padding: 1.25rem;
+
+  display: grid;
+  place-items: center;
+}
+
+.content {
+  @include mixins.glass-panel;
+
+  width: min(600px, 100%);
+
+  display: flex;
+  flex-direction: column;
+  max-height: 75dvh;
+}

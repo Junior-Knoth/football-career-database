@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import type { Save } from "../features/saves/save.types";
 import { saveApi } from "../features/saves/save.api";
-import { gameApi } from "../features/games/game.api";
+// import { gameApi } from "../features/games/game.api";
 
-export default function SavePage() {
+export default function SaveOverviewPage() {
   const [save, setSave] = useState<Save | null>(null);
-  const [game, setGame] = useState<string | null>(null);
+  // const [game, setGame] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
