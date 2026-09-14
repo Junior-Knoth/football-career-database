@@ -51,7 +51,7 @@ export default function SaveSelectionPage() {
     }
   }
 
-  async function loadSaves() {
+  async function loadData() {
     try {
       setLoading(true);
       const savesData = await saveApi.getByGameId(id as number);
@@ -83,7 +83,7 @@ export default function SaveSelectionPage() {
       return;
     }
 
-    loadSaves();
+    loadData();
   }, [id]);
   return (
     <div className={styles.container}>

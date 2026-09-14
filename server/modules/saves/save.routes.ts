@@ -6,6 +6,7 @@ import {
   listSaves,
   type CreateSaveInput,
 } from "./save.service.ts";
+import { isValidId } from "../../utils/validation.ts";
 
 export type SaveParams = {
   id: string;
@@ -26,7 +27,7 @@ export const saveRoutes: FastifyPluginAsync = async (app) => {
   }>("/:id", async (request, reply) => {
     const id = Number(request.params.id);
 
-    if (!Number.isInteger(id) || id <= 0) {
+    if (!isValidId(id)) {
       return reply.code(400).send({ error: "Invalid save ID" });
     }
 

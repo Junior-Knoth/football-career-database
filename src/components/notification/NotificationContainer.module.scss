@@ -1,0 +1,96 @@
+.notificationContainer {
+  position: fixed;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(
+    -50%
+  ); // Garante que o container fique perfeitamente centralizado na horizontal
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 440px;
+  width: calc(100% - 2rem);
+  pointer-events: none; // Permite clicar através do container nas áreas vazias
+}
+
+.notification {
+  pointer-events: auto; // Restaura os cliques apenas nos cards
+  display: flex;
+  align-items: center; // Alinha tudo perfeitamente ao centro na vertical
+  gap: 0.875rem;
+  padding: 0.875rem 1rem;
+
+  background-color: var(--surface);
+  backdrop-filter: blur(12px); // Mantém a vibe translúcida do seu design system
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+
+  color: var(--text-primary);
+  font-family: "Inter", sans-serif;
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-medium);
+
+  // Animação suave de surgimento centralizada de cima para baixo
+  animation: slideInDown var(--transition-normal) forwards;
+
+  // Caixa redonda do ícone à esquerda
+  .typeBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    border-radius: 50%;
+    color: #ffffff; // Garante que o ícone interno seja branco
+
+    .icon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  // Texto da mensagem flexível para suportar tamanhos variados
+  span {
+    flex: 1;
+    line-height: 1.4;
+    word-break: break-word;
+  }
+
+  // Botão de fechar alinhado geometricamente ao centro
+  button {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    transition:
+      background-color var(--transition-fast),
+      color var(--transition-fast);
+
+    &:hover {
+      background-color: var(--surface-soft);
+      color: var(--text-primary);
+    }
+  }
+}
+
+// Animação de entrada
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

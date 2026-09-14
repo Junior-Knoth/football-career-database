@@ -16,9 +16,9 @@ export const saves = sqliteTable("saves", {
     .notNull()
     .references(() => games.id, { onDelete: "restrict" }),
   status: text("status").notNull().$type<"active" | "finished" | "archived">(),
-  current_season_id: integer("current_season_id"),
+  currentSeasonId: integer("current_season_id"),
   managerName: text("manager_name").notNull(),
-  managerBirthDate: text("manager_birth_date"),
+  managerBirthdate: text("manager_birth_date"),
   managerNationalityId: integer("manager_nationality_id").references(
     () => countries.id,
     { onDelete: "restrict" },

@@ -5,6 +5,11 @@ import { games as gamesTable, saves as savesTable } from "../../db/schema.ts";
 export type CreateSaveInput = {
   name: string;
   gameId: number;
+  status: "active" | "finished" | "archived";
+  currentSeasonId: number | null;
+  managerName: string;
+  managerBirthdate: string;
+  managerNationalityId: number | null;
 };
 
 export type CreateSaveOutput = {
@@ -30,6 +35,11 @@ export async function createSave(input: CreateSaveInput): Promise<Save> {
     .values({
       name,
       gameId: input.gameId,
+      status: "active",
+      currentSeasonId: input.currentSeasonId,
+      managerName: input.managerName,
+      managerBirthdate: input.managerBirthdate,
+      managerNationalityId: input.managerNationalityId,
     })
     .returning({ id: savesTable.id });
 
@@ -58,6 +68,9 @@ export async function getSaveById(id: number) {
     .select({
       id: savesTable.id,
       name: savesTable.name,
+      status: savesTable.status,
+      currentSeason: {},
+      manager: {},
       game: {
         id: gamesTable.id,
         name: gamesTable.name,
