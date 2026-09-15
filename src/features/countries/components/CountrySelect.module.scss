@@ -1,0 +1,119 @@
+//Mixin
+@use "../../../styles/mixins" as mixins;
+
+.field {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+}
+
+.combobox {
+  position: relative;
+
+  width: 100%;
+  min-width: 0;
+}
+
+.input {
+  @include mixins.input;
+}
+
+.dropdown {
+  position: absolute;
+
+  z-index: 100;
+
+  top: calc(100% + 0.4rem);
+  left: 0;
+
+  width: 100%;
+  min-width: 100%;
+
+  max-height: min(260px, 35dvh);
+
+  margin: 0;
+  padding: 0.4rem;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  list-style: none;
+
+  background: rgba(250, 255, 252, 0.96);
+
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+
+  box-shadow: var(--shadow-md);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.option {
+  min-height: 40px;
+
+  padding: 0.65rem 0.75rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+
+  border-radius: var(--radius-sm);
+
+  cursor: pointer;
+
+  color: var(--text-primary);
+
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast);
+
+  user-select: none;
+}
+
+.optionActive {
+  background: rgba(23, 107, 115, 0.1);
+}
+
+.optionSelected {
+  color: var(--accent);
+  font-weight: var(--font-weight-semibold);
+}
+
+.optionName {
+  min-width: 0;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.optionCode {
+  flex-shrink: 0;
+
+  color: var(--text-muted);
+
+  font-size: var(--font-size-tiny);
+  font-weight: var(--font-weight-semibold);
+
+  letter-spacing: 0.04em;
+}
+
+.emptyState {
+  padding: 0.8rem;
+
+  text-align: center;
+
+  color: var(--text-muted);
+  font-size: var(--font-size-small);
+}

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styles from "./Breadcrumbs.module.scss";
 import { ChevronRight } from "lucide-react";
 
-type BreadcrumbItem = {
+export type BreadcrumbItem = {
   label: string;
   to?: string;
 };

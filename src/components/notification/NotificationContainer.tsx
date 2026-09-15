@@ -17,7 +17,7 @@ function getIconForType(type: Notification["type"]) {
     case "error":
       return {
         icon: <X className={styles.icon} />,
-        color: "var(--error)",
+        color: "var(--danger)",
       };
     case "warning":
       return {

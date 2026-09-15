@@ -1,75 +1,53 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable react-hooks/set-state-in-effect */
-import React, { useEffect, useState } from "react";
-import type { Save } from "../features/saves/save.types";
+import { useEffect, useState } from "react";
+import type { Save } from "../../features/saves/save.types";
 import { Link, useParams } from "react-router-dom";
-import { saveApi } from "../features/saves/save.api";
+import { saveApi } from "../../features/saves/save.api";
 import styles from "./SaveSelectionPage.module.scss";
 import { LogIn } from "lucide-react";
-import { gameApi } from "../features/games/game.api";
-import type { Game } from "../features/games/game.types";
-import Breadcrumbs from "../components/navigation/Breadcrumbs";
+import { gameApi } from "../../features/games/game.api";
+import type { Game } from "../../features/games/game.types";
+import Breadcrumbs from "../../components/navigation/Breadcrumbs";
+import { useNotification } from "../../features/notifications/notification.hook";
 
 export default function SaveSelectionPage() {
   const [saves, setSaves] = useState<Save[]>([]);
   const [game, setGame] = useState<Game>();
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  const [isCreatingSave, setIsCreatingSave] = useState(false);
-  const [newSaveName, setNewSaveName] = useState("");
 
   const { gameId } = useParams();
   const id = gameId ? parseInt(gameId, 10) : null;
 
-  async function handleNewSaveSubmit(
-    event: React.SubmitEvent<HTMLFormElement>,
-  ) {
-    event.preventDefault();
+  const { showNotification } = useNotification();
 
-    if (!newSaveName.trim() || !id) {
-      alert("Please enter a valid save name.");
+  async function loadData() {
+    if (!id) {
+      showNotification("ID do jogo inválido", "error", 3000);
+      setLoading(false);
       return;
     }
 
-    const newSave = {
-      name: newSaveName,
-      gameId: id as number,
-    };
-
-    try {
-      const createdSave = await saveApi.create(newSave);
-
-      if (createdSave) {
-        setSaves((prevSaves) => [...prevSaves, createdSave]);
-        setNewSaveName("");
-
-        setIsCreatingSave(false);
-      }
-    } catch (err) {
-      console.error("Error creating new save:", err);
-    }
-  }
-
-  async function loadData() {
     try {
       setLoading(true);
       const savesData = await saveApi.getByGameId(id as number);
       const gameData = await gameApi.getById(id as number);
 
       if (!gameData) {
-        setError("Game not found");
+        showNotification("Jogo não encontrado", "error", 3000);
       } else {
         setGame(gameData);
       }
 
       if (!savesData || savesData.length === 0) {
-        setError("No saves found");
+        showNotification(
+          "Nenhuma carreira encontrada para este jogo",
+          "info",
+          3000,
+        );
       } else {
         setSaves(savesData);
       }
     } catch (err) {
-      setError("Error fetching saves");
+      showNotification("Erro ao carregar carreiras", "error", 3000);
       console.error(err);
     } finally {
       setLoading(false);
@@ -77,14 +55,8 @@ export default function SaveSelectionPage() {
   }
 
   useEffect(() => {
-    if (!id) {
-      setError("Invalid game ID");
-      setLoading(false);
-      return;
-    }
-
     loadData();
-  }, [id]);
+  }, [id, showNotification]);
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -113,12 +85,7 @@ export default function SaveSelectionPage() {
             ))}
             <li>
               <Link to={`/games/${id}/create-save`}>
-                <div
-                  role="button"
-                  tabIndex={0}
-                  className={styles.newSaveCard}
-                  onClick={() => setIsCreatingSave(true)}
-                >
+                <div role="button" tabIndex={0} className={styles.newSaveCard}>
                   Nova carreira
                 </div>
               </Link>

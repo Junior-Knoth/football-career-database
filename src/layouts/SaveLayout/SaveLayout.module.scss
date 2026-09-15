@@ -1,0 +1,15 @@
+.container {
+  --page-margin: 1rem;
+
+  display: grid;
+  margin: var(--page-margin);
+  gap: 0.5rem;
+  height: calc(100dvh - (var(--page-margin) * 2));
+
+  grid-template-areas:
+    "sidebar header"
+    "sidebar main";
+
+  grid-template-columns: 16rem 1fr;
+  grid-template-rows: auto 1fr;
+}

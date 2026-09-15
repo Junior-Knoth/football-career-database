@@ -7,7 +7,6 @@ const defaultGames = [
   { name: "EA Sports FC 27" },
 ];
 
-// `flagCode` uses the ISO 3166-1 alpha-2 code expected by FlagCDN.
 const defaultCountries = [
   { name: "Afeganistão", flagCode: "AF", shortCode: "AFE" },
   { name: "África do Sul", flagCode: "ZA", shortCode: "AFS" },

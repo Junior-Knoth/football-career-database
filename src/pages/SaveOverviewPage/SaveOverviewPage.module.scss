@@ -1,7 +1,9 @@
 @use "../../styles/mixins" as mixins;
 
-.sidebar {
+.main {
   @include mixins.glass-panel;
 
-  grid-area: sidebar;
+  height: 100%;
+
+  grid-area: main;
 }

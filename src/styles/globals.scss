@@ -48,8 +48,13 @@
 
   --overlay: rgba(0, 0, 0, 0.55);
 
-  --success: #32b875; /* Verde mais claro e vibrante */
-  --success-hover: #299e63; /* Ligeiramente mais escuro para o hover */
+  --success: rgba(50, 184, 117, 0.8); /* Verde mais claro e vibrante */
+  --success-hover: rgba(
+    41,
+    158,
+    100,
+    0.8
+  ); /* Ligeiramente mais escuro para o hover */
   --surface-success: rgba(50, 184, 117, 0.15); /* Fundo sutil */
   --text-on-success: #ffffff; /* Texto branco para botões sólidos */
   --text-success: #1b633f;

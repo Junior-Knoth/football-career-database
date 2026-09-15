@@ -1,0 +1,65 @@
+@use "../../styles/mixins" as mixins;
+
+.menu {
+  position: relative;
+}
+
+.iconBtn {
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.icon {
+  color: var(--text-primary);
+
+  transition: all var(--transition-fast);
+
+  &:hover {
+    color: var(--accent);
+  }
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 0.3rem);
+  right: 0;
+
+  width: max-content;
+
+  padding: 1rem;
+
+  border-radius: var(--radius-sm);
+
+  background-color: var(--surface);
+  border: 1px solid var(--border-subtle);
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+  font-size: var(--font-size-small);
+
+  width: 100%;
+
+  transition: all var(--transition-fast);
+
+  &:hover {
+    color: var(--accent);
+  }
+}

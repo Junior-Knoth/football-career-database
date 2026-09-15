@@ -1,0 +1,172 @@
+TAREFA: FRONT — Refatorar o formulário de Save e implementar a interface de edição
+
+Contexto:
+Este projeto é um React + TypeScript + React Router + SCSS Modules.
+
+O backend do módulo de Saves já está pronto.
+
+Já existem funções de frontend/API prontas para consumo, incluindo:
+- saveApi.create(...)
+- saveApi.update(id, ...)
+- saveApi.getById(...)
+- saveApi.remove(...)
+
+NÃO implemente nem altere backend.
+NÃO altere banco de dados, schema Drizzle, services ou Fastify routes.
+NÃO altere http.ts ou o contrato existente das APIs sem uma necessidade realmente inevitável.
+
+Quero agora trabalhar exclusivamente na camada FRONT.
+
+Antes de alterar qualquer arquivo:
+1. inspecione a implementação atual de CreateSavePage;
+2. inspecione SaveActionsMenu;
+3. inspecione os tipos atuais de Save/CreateSaveInput/UpdateSaveInput;
+4. inspecione CountrySelect;
+5. inspecione o sistema de notifications;
+6. inspecione os estilos atuais relacionados ao formulário.
+
+OBJETIVO PRINCIPAL
+
+Atualmente CreateSavePage possui todo o formulário diretamente dentro da página.
+
+Quero extrair esse formulário para um componente reutilizável SaveForm, permitindo que o MESMO formulário seja usado tanto para criação quanto para edição de um Save.
+
+Arquitetura desejada:
+
+CreateSavePage
+    ↓
+SaveForm
+
+EditSaveModal
+    ↓
+SaveForm
+
+RESPONSABILIDADES
+
+SaveForm:
+- deve conter a UI e os estados dos campos compartilhados;
+- deve suportar valores iniciais;
+- deve permitir os modos create e edit, caso isso seja útil para textos/estado visual;
+- deve continuar utilizando CountrySelect;
+- deve manter as validações de formulário necessárias à UX;
+- deve entregar os valores finais através de um callback onSubmit;
+- NÃO deve importar ou chamar saveApi;
+- NÃO deve navegar entre páginas;
+- NÃO deve conhecer endpoints HTTP;
+- NÃO deve conter lógica específica do backend.
+
+CreateSavePage:
+- deve continuar responsável pelo contexto de criação;
+- deve obter o gameId da URL;
+- deve utilizar SaveForm;
+- ao receber os dados do formulário, deve chamar saveApi.create(...);
+- deve preservar notifications e navegação existentes;
+- o fluxo atual de criação deve continuar funcionando como antes do refactor.
+
+EditSaveModal:
+- deve receber o Save atual;
+- deve abrir com os campos já preenchidos com os valores existentes;
+- deve reutilizar SaveForm;
+- ao salvar deve chamar saveApi.update(save.id, ...);
+- deve exibir estado de submitting;
+- deve mostrar notification de sucesso ou erro;
+- deve fechar após atualização bem-sucedida;
+- não deve exigir uma página /edit separada.
+
+SaveActionsMenu:
+- a opção existente "Editar Save" deve abrir EditSaveModal;
+- "Excluir Save" deve continuar funcionando exatamente como já funciona;
+- não refatore a lógica de delete desnecessariamente.
+
+IMPORTANTE SOBRE DADOS
+
+Na edição, os campos editáveis pela interface são:
+- name
+- managerName
+- managerBirthDate
+- managerNationalityId
+
+Não coloque gameId como campo editável.
+Não coloque currentSeasonId neste formulário.
+Não precisa colocar status no formulário geral de edição agora.
+
+Se possível, envie ao update apenas os campos editáveis necessários de forma compatível com UpdateSaveInput.
+
+ESTILO
+
+Preserve a identidade visual atual do projeto.
+
+Não redesenhe o formulário do zero.
+
+Reutilize o SCSS atual sempre que possível.
+Evite duplicar o CSS entre Create e Edit.
+
+Se for necessário mover estilos de CreateSavePage para SaveForm.module.scss para torná-los reutilizáveis, faça isso cuidadosamente.
+
+O modal de edição deve combinar com o estilo glass/light atual do projeto.
+
+Não adicione bibliotecas externas de UI.
+
+QUALIDADE / CLEAN CODE
+
+- mantenha componentes pequenos e responsabilidades claras;
+- evite booleanos e condicionais espalhados desnecessariamente;
+- não crie abstrações genéricas excessivas;
+- não crie um sistema de forms genérico para o projeto inteiro;
+- SaveForm deve ser específico do domínio Save;
+- preserve os nomes e padrões já utilizados no projeto;
+- não faça refactors fora do escopo desta tarefa.
+
+COMPORTAMENTO ESPERADO
+
+Criação:
+Nova carreira
+→ formulário vazio
+→ preencher
+→ criar
+→ notification
+→ navegar para o save criado
+
+Edição:
+SaveActionsMenu
+→ Editar Save
+→ modal abre
+→ formulário preenchido com os dados atuais
+→ usuário altera os dados
+→ salvar
+→ saveApi.update(...)
+→ notification
+→ modal fecha
+→ as informações exibidas no workspace devem refletir a atualização sem exigir reload manual, usando a abordagem mais simples compatível com a arquitetura atual.
+
+ACESSIBILIDADE BÁSICA
+
+Para o modal:
+- role/dialog apropriado;
+- aria-modal;
+- botão fechar com aria-label;
+- Escape pode fechar se isso puder ser implementado sem complexidade excessiva.
+
+Não precisa construir um sistema avançado de focus trapping nesta tarefa.
+
+PROCESSO
+
+Faça a alteração em passos conservadores.
+
+Primeiro extraia SaveForm e garanta que CreateSavePage continue funcionando.
+
+Somente depois implemente EditSaveModal e conecte ao SaveActionsMenu.
+
+Ao final:
+- execute TypeScript/build/lint disponíveis no projeto;
+- corrija apenas erros relacionados a esta tarefa;
+- não altere código não relacionado apenas para “melhorá-lo”.
+
+Na resposta final, informe de forma curta:
+- quais arquivos foram criados;
+- quais arquivos foram alterados;
+- como ficou a divisão de responsabilidades;
+- qualquer decisão importante tomada;
+- qualquer ponto que eu deva testar manualmente.
+
+Não implemente backend.

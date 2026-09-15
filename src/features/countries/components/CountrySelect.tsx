@@ -9,6 +9,7 @@ type CountrySelectProps = {
   onChange: (countryId: number | null) => void;
   label?: string;
   id?: string;
+  disabled?: boolean;
 };
 
 function normalizeText(value: string) {
@@ -24,6 +25,7 @@ export default function CountrySelect({
   onChange,
   label = "Nacionalidade",
   id = "country-select",
+  disabled = false,
 }: CountrySelectProps) {
   const [searchText, setSearchText] = useState("");
   const [isOpen, setIsOpen] = useState(false);
@@ -106,6 +108,7 @@ export default function CountrySelect({
           className={styles.input}
           type="text"
           value={inputValue}
+          disabled={disabled}
           autoComplete="off"
           role="combobox"
           aria-expanded={isOpen}
@@ -177,7 +180,10 @@ export default function CountrySelect({
                     <span className={styles.optionName}>{country.name}</span>
 
                     <span className={styles.optionCode}>
-                      {country.shortCode}
+                      <img
+                        src={`https://flagcdn.com/w20/${country.flagCode.toLowerCase()}.png`}
+                        alt=""
+                      />
                     </span>
                   </li>
                 );

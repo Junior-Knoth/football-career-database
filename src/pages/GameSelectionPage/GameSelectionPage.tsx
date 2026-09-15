@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
-import { gameApi } from "../features/games/game.api";
+import { gameApi } from "../../features/games/game.api";
 import styles from "./GameSelectionPage.module.scss";
 import { useEffect, useState } from "react";
 
 import { LogIn } from "lucide-react";
 
-import type { Game } from "../features/games/game.types";
-import type { Save } from "../features/saves/save.types";
-import { saveApi } from "../features/saves/save.api";
+import type { Game } from "../../features/games/game.types";
+import type { Save } from "../../features/saves/save.types";
+import { saveApi } from "../../features/saves/save.api";
 
 export default function GameSelectionPage() {
   const [games, setGames] = useState<Game[]>([]);

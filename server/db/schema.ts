@@ -1,4 +1,10 @@
-import { integer, sqliteTable, text, unique } from "drizzle-orm/sqlite-core";
+import {
+  type AnySQLiteColumn,
+  integer,
+  sqliteTable,
+  text,
+  unique,
+} from "drizzle-orm/sqlite-core";
 
 export const games = sqliteTable("games", {
   id: integer("id").primaryKey({
@@ -16,9 +22,14 @@ export const saves = sqliteTable("saves", {
     .notNull()
     .references(() => games.id, { onDelete: "restrict" }),
   status: text("status").notNull().$type<"active" | "finished" | "archived">(),
-  currentSeasonId: integer("current_season_id"),
+  currentSeasonId: integer("current_season_id").references(
+    (): AnySQLiteColumn => seasons.id,
+    {
+      onDelete: "set null",
+    },
+  ),
   managerName: text("manager_name").notNull(),
-  managerBirthdate: text("manager_birth_date"),
+  managerBirthDate: text("manager_birth_date").notNull(),
   managerNationalityId: integer("manager_nationality_id").references(
     () => countries.id,
     { onDelete: "restrict" },
@@ -33,7 +44,7 @@ export const seasons = sqliteTable(
     }),
     saveId: integer("save_id")
       .notNull()
-      .references(() => saves.id, { onDelete: "restrict" }),
+      .references(() => saves.id, { onDelete: "cascade" }),
     label: text("label").notNull(),
     startDate: text("start_date").notNull(),
     endDate: text("end_date").notNull(),
@@ -74,7 +85,7 @@ export const saveTeams = sqliteTable(
     }),
     saveId: integer("save_id")
       .notNull()
-      .references(() => saves.id, { onDelete: "restrict" }),
+      .references(() => saves.id, { onDelete: "cascade" }),
     teamId: integer("team_id")
       .notNull()
       .references(() => teams.id, { onDelete: "restrict" }),
@@ -90,15 +101,15 @@ export const managerAssignments = sqliteTable("manager_assignments", {
   }),
   saveId: integer("save_id")
     .notNull()
-    .references(() => saves.id, { onDelete: "restrict" }),
+    .references(() => saves.id, { onDelete: "cascade" }),
   saveTeamId: integer("save_team_id")
     .notNull()
-    .references(() => saveTeams.id, { onDelete: "restrict" }),
+    .references(() => saveTeams.id, { onDelete: "cascade" }),
   startSeasonId: integer("start_season_id")
     .notNull()
-    .references(() => seasons.id, { onDelete: "restrict" }),
+    .references(() => seasons.id, { onDelete: "cascade" }),
   endSeasonId: integer("end_season_id").references(() => seasons.id, {
-    onDelete: "restrict",
+    onDelete: "cascade",
   }),
   startDate: text("start_date"),
   endDate: text("end_date"),
@@ -131,7 +142,7 @@ export const savePlayers = sqliteTable(
     }),
     saveId: integer("save_id")
       .notNull()
-      .references(() => saves.id, { onDelete: "restrict" }),
+      .references(() => saves.id, { onDelete: "cascade" }),
     playerId: integer("player_id")
       .notNull()
       .references(() => players.id, { onDelete: "restrict" }),
@@ -152,12 +163,12 @@ export const playerSeasons = sqliteTable(
     }),
     savePlayerId: integer("save_player_id")
       .notNull()
-      .references(() => savePlayers.id, { onDelete: "restrict" }),
+      .references(() => savePlayers.id, { onDelete: "cascade" }),
     seasonId: integer("season_id")
       .notNull()
-      .references(() => seasons.id, { onDelete: "restrict" }),
+      .references(() => seasons.id, { onDelete: "cascade" }),
     saveTeam: integer("save_team_id").references(() => saveTeams.id, {
-      onDelete: "restrict",
+      onDelete: "set null",
     }),
   },
   (table) => [
@@ -228,7 +239,7 @@ export const playerSeasonStats = sqliteTable("player_season_stats", {
   }),
   playerSeasonId: integer("player_season_id")
     .notNull()
-    .references(() => playerSeasons.id, { onDelete: "restrict" }),
+    .references(() => playerSeasons.id, { onDelete: "cascade" }),
   statTypeId: integer("stat_type_id")
     .notNull()
     .references(() => statType.id, { onDelete: "restrict" }),
@@ -244,15 +255,15 @@ export const transfers = sqliteTable("transfers", {
   }),
   savePlayerId: integer("save_player_id")
     .notNull()
-    .references(() => savePlayers.id, { onDelete: "restrict" }),
+    .references(() => savePlayers.id, { onDelete: "cascade" }),
   seasonId: integer("season_id")
     .notNull()
-    .references(() => seasons.id, { onDelete: "restrict" }),
+    .references(() => seasons.id, { onDelete: "cascade" }),
   fromSaveTeamId: integer("from_save_team_id").references(() => saveTeams.id, {
-    onDelete: "restrict",
+    onDelete: "set null",
   }),
   toSaveTeamId: integer("to_save_team_id").references(() => saveTeams.id, {
-    onDelete: "restrict",
+    onDelete: "set null",
   }),
   type: text("type")
     .notNull()
@@ -268,16 +279,16 @@ export const contracts = sqliteTable("contracts", {
   }),
   savePlayerId: integer("save_player_id")
     .notNull()
-    .references(() => savePlayers.id, { onDelete: "restrict" }),
+    .references(() => savePlayers.id, { onDelete: "cascade" }),
   saveTeamId: integer("save_team_id")
     .notNull()
-    .references(() => saveTeams.id, { onDelete: "restrict" }),
+    .references(() => saveTeams.id, { onDelete: "cascade" }),
   startSeasonId: integer("start_season_id")
     .notNull()
-    .references(() => seasons.id, { onDelete: "restrict" }),
+    .references(() => seasons.id, { onDelete: "cascade" }),
   endSeasonId: integer("end_season_id")
     .notNull()
-    .references(() => seasons.id, { onDelete: "restrict" }),
+    .references(() => seasons.id, { onDelete: "cascade" }),
   weeklySalary: integer("weekly_salary").notNull(),
   currency: text("currency").$default(() => "EUR"),
   signedDate: text("signed_date"),
@@ -289,10 +300,10 @@ export const playerCareerEvents = sqliteTable("player_career_events", {
   }),
   savePlayerId: integer("save_player_id")
     .notNull()
-    .references(() => savePlayers.id, { onDelete: "restrict" }),
+    .references(() => savePlayers.id, { onDelete: "cascade" }),
   seasonId: integer("season_id")
     .notNull()
-    .references(() => seasons.id, { onDelete: "restrict" }),
+    .references(() => seasons.id, { onDelete: "cascade" }),
   eventType: text("event_type")
     .notNull()
     .$type<
@@ -305,7 +316,7 @@ export const playerCareerEvents = sqliteTable("player_career_events", {
     >(),
   eventDate: text("event_date").notNull(),
   saveTeamId: integer("save_team_id").references(() => saveTeams.id, {
-    onDelete: "restrict",
+    onDelete: "set null",
   }),
 });
 
@@ -316,10 +327,10 @@ export const honours = sqliteTable("honours", {
   name: text("name").notNull(),
   saveId: integer("save_id")
     .notNull()
-    .references(() => saves.id, { onDelete: "restrict" }),
+    .references(() => saves.id, { onDelete: "cascade" }),
   seasonId: integer("season_id")
     .notNull()
-    .references(() => seasons.id, { onDelete: "restrict" }),
+    .references(() => seasons.id, { onDelete: "cascade" }),
   type: text("type")
     .notNull()
     .$type<
@@ -329,10 +340,10 @@ export const honours = sqliteTable("honours", {
     onDelete: "restrict",
   }),
   savePlayerId: integer("save_player_id").references(() => savePlayers.id, {
-    onDelete: "restrict",
+    onDelete: "set null",
   }),
   saveTeamId: integer("save_team_id").references(() => saveTeams.id, {
-    onDelete: "restrict",
+    onDelete: "set null",
   }),
 });
 
@@ -342,7 +353,7 @@ export const playerSeasonPositions = sqliteTable("player_season_positions", {
   }),
   playerSeasonId: integer("player_season_id")
     .notNull()
-    .references(() => playerSeasons.id, { onDelete: "restrict" }),
+    .references(() => playerSeasons.id, { onDelete: "cascade" }),
   positionId: integer("position_id")
     .notNull()
     .references(() => positions.id, { onDelete: "restrict" }),

@@ -1,12 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 import SaveLayout from "./layouts/SaveLayout/SaveLayout";
-import GameSelectionPage from "./pages/GameSelectionPage";
-import SaveSelectionPage from "./pages/SaveSelectionPage";
-import SaveOverviewPage from "./pages/SaveOverviewPage";
-import SeasonsPage from "./pages/SeasonsPage";
-import PlayersPage from "./pages/PlayersPage";
-import TransfersPage from "./pages/TransfersPage";
-import CreateSavePage from "./pages/CreateSavePage";
+import GameSelectionPage from "./pages/GameSelectionPage/GameSelectionPage";
+import SaveSelectionPage from "./pages/SaveSelectionPage/SaveSelectionPage";
+import SaveOverviewPage from "./pages/SaveOverviewPage/SaveOverviewPage";
+import SeasonsPage from "./pages/SeasonsPage/SeasonsPage";
+import PlayersPage from "./pages/PlayersPage/PlayersPage";
+import TransfersPage from "./pages/TransfersPage/TransfersPage";
+import CreateSavePage from "./pages/CreateSavePage/CreateSavePage";
 
 function App() {
   return (

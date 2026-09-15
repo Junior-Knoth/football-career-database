@@ -8,8 +8,16 @@ export type CreateSaveInput = {
   status: "active" | "finished" | "archived";
   currentSeasonId: number | null;
   managerName: string;
-  managerBirthdate: string;
+  managerBirthDate: string;
   managerNationalityId: number | null;
+};
+
+export type UpdateSaveInput = {
+  name?: string;
+  managerName?: string;
+  managerBirthDate?: string;
+  managerNationalityId?: number;
+  status?: "active" | "finished" | "archived";
 };
 
 export type CreateSaveOutput = {
@@ -27,6 +35,21 @@ type Save = {
   };
 };
 
+const saveFields = {
+  id: savesTable.id,
+  name: savesTable.name,
+  status: savesTable.status,
+  game: {
+    id: gamesTable.id,
+    name: gamesTable.name,
+  },
+  manager: {
+    name: savesTable.managerName,
+    birthDate: savesTable.managerBirthDate,
+    nationalityId: savesTable.managerNationalityId,
+  },
+};
+
 export async function createSave(input: CreateSaveInput): Promise<Save> {
   const name = input.name.trim();
 
@@ -36,9 +59,9 @@ export async function createSave(input: CreateSaveInput): Promise<Save> {
       name,
       gameId: input.gameId,
       status: "active",
-      currentSeasonId: input.currentSeasonId,
+      currentSeasonId: null,
       managerName: input.managerName,
-      managerBirthdate: input.managerBirthdate,
+      managerBirthDate: input.managerBirthDate,
       managerNationalityId: input.managerNationalityId,
     })
     .returning({ id: savesTable.id });
@@ -48,16 +71,86 @@ export async function createSave(input: CreateSaveInput): Promise<Save> {
   return fullSave;
 }
 
-export async function listSaves() {
-  return db
-    .select({
+export async function deleteSave(
+  id: number,
+): Promise<{ id: number; name: string } | null> {
+  const [deletedSave] = await db
+    .delete(savesTable)
+    .where(eq(savesTable.id, id))
+    .returning({
       id: savesTable.id,
       name: savesTable.name,
-      game: {
-        id: gamesTable.id,
-        name: gamesTable.name,
-      },
-    })
+    });
+
+  return deletedSave ?? null;
+}
+
+export async function updateSave(
+  id: number,
+  input: UpdateSaveInput,
+): Promise<Save | null> {
+  const updateData: Partial<typeof savesTable.$inferInsert> = {};
+
+  if (input.name !== undefined) {
+    const name = input.name.trim();
+
+    if (!name) {
+      throw new Error("O nome da carreira não pode estar vazio.");
+    }
+
+    updateData.name = name;
+  }
+
+  if (input.managerName !== undefined) {
+    const managerName = input.managerName.trim();
+
+    if (!managerName) {
+      throw new Error("O nome do treinador não pode estar vazio.");
+    }
+
+    updateData.managerName = managerName;
+  }
+
+  if (input.managerBirthDate !== undefined) {
+    const managerBirthDate = input.managerBirthDate.trim();
+
+    if (!managerBirthDate) {
+      throw new Error("A data de nascimento não pode estar vazia.");
+    }
+
+    updateData.managerBirthDate = managerBirthDate;
+  }
+
+  if (input.managerNationalityId !== undefined) {
+    updateData.managerNationalityId = input.managerNationalityId;
+  }
+
+  if (input.status !== undefined) {
+    updateData.status = input.status;
+  }
+
+  if (Object.keys(updateData).length === 0) {
+    throw new Error("Nenhum campo foi informado para atualização.");
+  }
+
+  const [updatedSave] = await db
+    .update(savesTable)
+    .set(updateData)
+    .where(eq(savesTable.id, id))
+    .returning({
+      id: savesTable.id,
+    });
+
+  if (!updatedSave) {
+    return null;
+  }
+
+  return getSaveById(updatedSave.id);
+}
+
+export async function listSaves() {
+  return db
+    .select(saveFields)
     .from(savesTable)
     .innerJoin(gamesTable, eq(savesTable.gameId, gamesTable.id))
     .orderBy(asc(savesTable.name));
@@ -65,17 +158,7 @@ export async function listSaves() {
 
 export async function getSaveById(id: number) {
   const [save] = await db
-    .select({
-      id: savesTable.id,
-      name: savesTable.name,
-      status: savesTable.status,
-      currentSeason: {},
-      manager: {},
-      game: {
-        id: gamesTable.id,
-        name: gamesTable.name,
-      },
-    })
+    .select(saveFields)
     .from(savesTable)
     .where(eq(savesTable.id, id))
     .innerJoin(gamesTable, eq(savesTable.gameId, gamesTable.id))
@@ -86,14 +169,7 @@ export async function getSaveById(id: number) {
 
 export async function getSavesByGameId(gameId: number) {
   return db
-    .select({
-      id: savesTable.id,
-      name: savesTable.name,
-      game: {
-        id: gamesTable.id,
-        name: gamesTable.name,
-      },
-    })
+    .select(saveFields)
     .from(savesTable)
     .where(eq(savesTable.gameId, gameId))
     .innerJoin(gamesTable, eq(savesTable.gameId, gamesTable.id))

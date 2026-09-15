@@ -1,0 +1,14 @@
+@use "../../styles/mixins" as mixins;
+
+.header {
+  @include mixins.glass-panel;
+
+  padding: 0.25rem 1.5rem;
+
+  grid-area: header;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}

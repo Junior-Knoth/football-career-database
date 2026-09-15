@@ -24,4 +24,19 @@ export const api = {
       body: JSON.stringify(body),
     });
   },
+
+  delete<T>(path: string) {
+    return request<T>(path, {
+      method: "DELETE",
+    });
+  },
+
+  patch: <T>(path: string, data: unknown) =>
+    request<T>(path, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }),
 };

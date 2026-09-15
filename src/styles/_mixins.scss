@@ -27,7 +27,7 @@
 }
 
 @mixin glass-panel {
-  padding: 2.5rem;
+  padding: 1.5rem;
 
   background: var(--surface);
   border: 1px solid var(--border);
@@ -36,4 +36,72 @@
   box-shadow: var(--shadow-lg);
 
   backdrop-filter: blur(18px);
+}
+
+@mixin input {
+  width: 100%;
+  min-height: 46px;
+
+  padding: 0.75rem 2.5rem 0.75rem 0.9rem;
+
+  background: rgba(255, 255, 255, 0.52);
+
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+
+  color: var(--text-primary);
+  font: inherit;
+
+  outline: none;
+
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+
+  &::placeholder {
+    color: var(--text-muted);
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.68);
+  }
+
+  &:focus {
+    background: rgba(255, 255, 255, 0.82);
+
+    border-color: var(--accent);
+
+    box-shadow: 0 0 0 3px rgba(23, 107, 115, 0.12);
+  }
+}
+
+@mixin button {
+  min-height: 46px;
+
+  padding: 0.75rem 1.5rem;
+
+  background: var(--success);
+  border: none;
+  border-radius: var(--radius-md);
+
+  color: var(--text-on-success);
+  font: inherit;
+  font-weight: var(--font-weight-normal);
+
+  cursor: pointer;
+
+  transition: all var(--transition-fast);
+
+  &:hover {
+    background: var(--success-hover);
+    color: var(--text-on-success);
+
+    box-shadow: var(--shadow-sm);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent-hover);
+    outline-offset: 3px;
+  }
 }
