@@ -39,6 +39,7 @@ const saveFields = {
   id: savesTable.id,
   name: savesTable.name,
   status: savesTable.status,
+  currentSeasonId: savesTable.currentSeasonId,
   game: {
     id: gamesTable.id,
     name: gamesTable.name,

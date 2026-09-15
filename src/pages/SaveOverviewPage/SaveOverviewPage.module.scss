@@ -1,9 +1,147 @@
-@use "../../styles/mixins" as mixins;
+.overview {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 
-.main {
-  @include mixins.glass-panel;
+  min-height: 100%;
+}
 
-  height: 100%;
+.intro h1 {
+  margin-top: 0.35rem;
 
-  grid-area: main;
+  color: var(--text-primary);
+  font-size: var(--font-size-title);
+}
+
+.intro > p:last-child {
+  margin-top: 0.5rem;
+
+  color: var(--text-secondary);
+  font-size: var(--font-size-body);
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem;
+}
+
+.details > div {
+  padding: 1rem;
+
+  background: var(--surface-soft);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.details dt {
+  color: var(--text-secondary);
+  font-size: var(--font-size-small);
+}
+
+.details dd {
+  margin-top: 0.35rem;
+
+  color: var(--text-primary);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-semibold);
+}
+
+.teamSummaries {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.teamSummary {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-width: 0;
+  padding: 1rem;
+  background: var(--surface-soft);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+
+  &:hover {
+    background: var(--surface-hover);
+    border-color: var(--border-hover);
+    transform: translateY(-1px);
+  }
+
+  > svg {
+    width: 1rem;
+    height: 1rem;
+    margin-left: auto;
+    flex: none;
+    color: var(--accent);
+  }
+}
+
+.summaryIcon {
+  display: grid;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex: none;
+  place-items: center;
+  background: var(--surface-info);
+  border-radius: var(--radius-sm);
+  color: var(--accent);
+
+  svg {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+}
+
+.summaryContent {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.25rem;
+
+  span {
+    color: var(--text-secondary);
+    font-size: var(--font-size-tiny);
+  }
+
+  strong {
+    overflow: hidden;
+    font-size: var(--font-size-small);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.notice {
+  padding: 0.9rem 1rem;
+
+  background: var(--surface-warning);
+  border-radius: var(--radius-md);
+
+  color: var(--warning-hover);
+  font-size: var(--font-size-small);
+}
+
+.loading {
+  color: var(--text-secondary);
+}
+
+@media (max-width: 680px) {
+  .teamSummaries {
+    grid-template-columns: 1fr;
+  }
 }

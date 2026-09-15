@@ -1,0 +1,240 @@
+@use "../../../styles/mixins" as mixins;
+
+.page {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+
+  > svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: var(--accent);
+  }
+
+  h1 {
+    margin-top: 0.35rem;
+    color: var(--text-primary);
+    font-size: var(--font-size-title);
+  }
+}
+
+.eyebrow,
+.status {
+  color: var(--accent);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.description,
+.setupIntro p,
+.currentHeading p,
+.stateCard p {
+  margin-top: 0.5rem;
+  color: var(--text-secondary);
+  font-size: var(--font-size-body);
+}
+
+.currentCard,
+.setup {
+  padding: 1.25rem;
+  background: var(--surface-soft);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+}
+
+.currentHeading {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  h2 {
+    margin-top: 0.25rem;
+    color: var(--text-primary);
+    font-size: var(--font-size-subtitle);
+  }
+}
+
+.teamIcon {
+  display: grid;
+  width: 3.5rem;
+  height: 3.5rem;
+  flex: none;
+  place-items: center;
+  background: var(--surface-info);
+  border-radius: var(--radius-md);
+  color: var(--accent);
+
+  svg {
+    width: 1.7rem;
+    height: 1.7rem;
+  }
+}
+
+.teamDetails {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+
+  > div {
+    padding: 0.85rem;
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: var(--radius-md);
+  }
+
+  dt {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--text-secondary);
+    font-size: var(--font-size-tiny);
+
+    svg {
+      width: 0.95rem;
+      height: 0.95rem;
+    }
+  }
+
+  dd {
+    margin-top: 0.35rem;
+    color: var(--text-primary);
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-semibold);
+  }
+}
+
+.setup {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.setupIntro h2,
+.stateCard h2 {
+  color: var(--text-primary);
+  font-size: var(--font-size-subtitle);
+}
+
+.modeTabs {
+  display: flex;
+  gap: 0.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+
+  button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 38px;
+    padding: 0.5rem 0.8rem;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    cursor: pointer;
+    font: inherit;
+    font-size: var(--font-size-small);
+    transition:
+      background-color var(--transition-fast),
+      color var(--transition-fast);
+
+    &:hover:not(:disabled) {
+      background: var(--surface-hover);
+      color: var(--accent);
+    }
+
+    &:disabled {
+      cursor: wait;
+      opacity: 0.7;
+    }
+
+    svg {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+
+  .activeTab {
+    background: var(--surface-info);
+    border-color: var(--border-hover);
+    color: var(--accent);
+    font-weight: var(--font-weight-semibold);
+  }
+}
+
+.setupContent {
+  width: min(620px, 100%);
+}
+
+.primaryButton,
+.stateCard button,
+.stateCard a {
+  @include mixins.button;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.primaryButton {
+  margin-top: 1rem;
+
+  &:disabled {
+    cursor: wait;
+    opacity: 0.7;
+  }
+}
+
+.stateCard {
+  display: flex;
+  min-height: 260px;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: var(--surface-soft);
+  border: 1px dashed var(--border-subtle);
+  border-radius: var(--radius-lg);
+  text-align: center;
+
+  > svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--accent);
+  }
+
+  button,
+  a {
+    margin-top: 1.25rem;
+  }
+}
+
+.loading {
+  color: var(--text-secondary);
+}
+
+@media (max-width: 600px) {
+  .header > svg {
+    display: none;
+  }
+
+  .modeTabs {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .primaryButton {
+    width: 100%;
+  }
+}

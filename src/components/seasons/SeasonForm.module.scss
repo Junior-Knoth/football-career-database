@@ -1,0 +1,55 @@
+@use "../../styles/mixins" as mixins;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.dates {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.field {
+  min-width: 0;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+  font-size: var(--font-size-small);
+}
+
+.input {
+  @include mixins.input;
+  padding-right: 0.9rem;
+
+  &[aria-invalid="true"] {
+    border-color: var(--danger);
+  }
+}
+
+.error {
+  margin-top: -0.5rem;
+  color: var(--danger-hover);
+  font-size: var(--font-size-small);
+}
+
+.submitButton {
+  @include mixins.button;
+  margin-top: 0.25rem;
+
+  &:disabled {
+    cursor: wait;
+    opacity: 0.7;
+  }
+}
+
+@media (max-width: 540px) {
+  .dates {
+    grid-template-columns: 1fr;
+  }
+}

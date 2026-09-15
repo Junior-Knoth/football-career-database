@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import type { Save } from "../../features/saves/save.types";
 import { Link, useParams } from "react-router-dom";
+import { LogIn } from "lucide-react";
+
+import type { Save } from "../../features/saves/save.types";
 import { saveApi } from "../../features/saves/save.api";
 import styles from "./SaveSelectionPage.module.scss";
-import { LogIn } from "lucide-react";
 import { gameApi } from "../../features/games/game.api";
 import type { Game } from "../../features/games/game.types";
 import Breadcrumbs from "../../components/navigation/Breadcrumbs";
@@ -13,56 +14,69 @@ export default function SaveSelectionPage() {
   const [saves, setSaves] = useState<Save[]>([]);
   const [game, setGame] = useState<Game>();
   const [loading, setLoading] = useState(true);
-
   const { gameId } = useParams();
   const id = gameId ? parseInt(gameId, 10) : null;
-
   const { showNotification } = useNotification();
 
-  async function loadData() {
-    if (!id) {
-      showNotification("ID do jogo inválido", "error", 3000);
-      setLoading(false);
-      return;
-    }
-
-    try {
-      setLoading(true);
-      const savesData = await saveApi.getByGameId(id as number);
-      const gameData = await gameApi.getById(id as number);
-
-      if (!gameData) {
-        showNotification("Jogo não encontrado", "error", 3000);
-      } else {
-        setGame(gameData);
-      }
-
-      if (!savesData || savesData.length === 0) {
-        showNotification(
-          "Nenhuma carreira encontrada para este jogo",
-          "info",
-          3000,
-        );
-      } else {
-        setSaves(savesData);
-      }
-    } catch (err) {
-      showNotification("Erro ao carregar carreiras", "error", 3000);
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  }
-
   useEffect(() => {
-    loadData();
+    let isCurrent = true;
+
+    async function loadData() {
+      if (!id) {
+        showNotification("ID do jogo inválido", "error", 3000);
+        return;
+      }
+
+      try {
+        const [savesData, gameData] = await Promise.all([
+          saveApi.getByGameId(id),
+          gameApi.getById(id),
+        ]);
+
+        if (!isCurrent) {
+          return;
+        }
+
+        if (!gameData) {
+          showNotification("Jogo não encontrado", "error", 3000);
+        } else {
+          setGame(gameData);
+        }
+
+        if (savesData.length === 0) {
+          showNotification(
+            "Nenhuma carreira encontrada para este jogo",
+            "info",
+            3000,
+          );
+        } else {
+          setSaves(savesData);
+        }
+      } catch (error) {
+        if (isCurrent) {
+          showNotification("Erro ao carregar carreiras", "error", 3000);
+          console.error(error);
+        }
+      } finally {
+        if (isCurrent) {
+          setLoading(false);
+        }
+      }
+    }
+
+    void loadData();
+
+    return () => {
+      isCurrent = false;
+    };
   }, [id, showNotification]);
+
   return (
     <div className={styles.container}>
       <div className={styles.content}>
         <Breadcrumbs
           items={[
-            { label: "Inicio", to: "/" },
+            { label: "Início", to: "/" },
             { label: game?.name ?? "Jogo desconhecido" },
           ]}
         />

@@ -1,3 +1,5 @@
+import SaveWorkspacePlaceholder from "../../components/saves/SaveWorkspacePlaceholder";
+
 export default function PlayersPage() {
-  return <></>;
+  return <SaveWorkspacePlaceholder title="Players" />;
 }

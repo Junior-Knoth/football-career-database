@@ -1,0 +1,210 @@
+@use "../../styles/mixins" as mixins;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  min-height: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.header h1 {
+  margin-top: 0.35rem;
+  color: var(--text-primary);
+  font-size: var(--font-size-title);
+}
+
+.description {
+  margin-top: 0.5rem;
+  color: var(--text-secondary);
+  font-size: var(--font-size-body);
+}
+
+.primaryButton {
+  @include mixins.button;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex: none;
+}
+
+.loading {
+  color: var(--text-secondary);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  list-style: none;
+}
+
+.seasonCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.1rem 1.25rem;
+  background: var(--surface-soft);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.seasonInfo {
+  min-width: 0;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.titleRow h2 {
+  color: var(--text-primary);
+  font-size: var(--font-size-subtitle);
+}
+
+.seasonInfo > p {
+  margin-top: 0.35rem;
+  color: var(--text-secondary);
+  font-size: var(--font-size-small);
+}
+
+.currentBadge {
+  padding: 0.2rem 0.55rem;
+  background: var(--surface-info);
+  border-radius: 999px;
+  color: var(--accent);
+  font-size: var(--font-size-tiny);
+  font-weight: var(--font-weight-semibold);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.setCurrentButton,
+.iconButton {
+  min-height: 38px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  cursor: pointer;
+  font: inherit;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+
+  &:hover:not(:disabled) {
+    background: var(--surface-hover);
+    border-color: var(--border-hover);
+    color: var(--accent);
+  }
+
+  &:disabled {
+    cursor: wait;
+    opacity: 0.65;
+  }
+}
+
+.setCurrentButton {
+  padding: 0.5rem 0.8rem;
+  background: transparent;
+  font-size: var(--font-size-small);
+}
+
+.iconButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  padding: 0;
+  background: transparent;
+}
+
+.deleteButton:hover:not(:disabled) {
+  border-color: var(--danger);
+  color: var(--danger-hover);
+}
+
+.emptyState,
+.errorState {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 260px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.emptyState {
+  background: var(--surface-soft);
+  border: 1px dashed var(--border-subtle);
+  border-radius: var(--radius-lg);
+
+  > svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--accent);
+  }
+
+  h2 {
+    color: var(--text-primary);
+    font-size: var(--font-size-subtitle);
+  }
+
+  p {
+    margin-top: 0.5rem;
+    color: var(--text-secondary);
+  }
+
+  .primaryButton {
+    margin-top: 1.5rem;
+  }
+}
+
+.errorState {
+  background: var(--surface-danger);
+  border-radius: var(--radius-lg);
+  color: var(--danger-hover);
+}
+
+@media (max-width: 720px) {
+  .header,
+  .seasonCard {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .actions {
+    justify-content: flex-start;
+  }
+
+  .primaryButton {
+    align-self: flex-start;
+  }
+}

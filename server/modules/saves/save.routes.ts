@@ -10,6 +10,10 @@ import {
   type UpdateSaveInput,
 } from "./save.service.ts";
 import { isValidId } from "../../utils/validation.ts";
+import {
+  SeasonServiceError,
+  setCurrentSeason,
+} from "../seasons/season.service.ts";
 
 export type SaveParams = {
   id: string;
@@ -21,6 +25,14 @@ type SaveQuery = {
 
 type DeleteParams = {
   id: string;
+};
+
+type CurrentSeasonParams = {
+  saveId: string;
+};
+
+type CurrentSeasonBody = {
+  seasonId?: unknown;
 };
 
 export const saveRoutes: FastifyPluginAsync = async (app) => {
@@ -38,6 +50,40 @@ export const saveRoutes: FastifyPluginAsync = async (app) => {
     "managerNationalityId",
     "status",
   ];
+
+  app.patch<{
+    Params: CurrentSeasonParams;
+    Body: CurrentSeasonBody;
+  }>("/:saveId/current-season", async (request, reply) => {
+    const saveId = Number(request.params.saveId);
+    const body = request.body;
+
+    if (!isValidId(saveId)) {
+      return reply.code(400).send({ message: "ID da carreira inválido" });
+    }
+
+    if (
+      !body ||
+      typeof body !== "object" ||
+      Array.isArray(body) ||
+      Object.keys(body).length !== 1 ||
+      !("seasonId" in body) ||
+      !isValidId(body.seasonId as number)
+    ) {
+      return reply.code(400).send({ message: "ID da temporada inválido" });
+    }
+
+    try {
+      const result = await setCurrentSeason(saveId, body.seasonId as number);
+      return reply.send(result);
+    } catch (error) {
+      if (error instanceof SeasonServiceError) {
+        return reply.code(error.statusCode).send({ message: error.message });
+      }
+
+      throw error;
+    }
+  });
 
   app.patch<{
     Params: SaveParams;

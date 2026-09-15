@@ -65,8 +65,14 @@ export default function SaveLayout() {
         items={[...baseBreadcrumbs, ...pageBreadcrumbs]}
         onSaveUpdated={handleSaveUpdated}
       />
-      <main>
-        <Outlet context={{ save, setPageBreadcrumbs }} />
+      <main className={styles.main}>
+        <Outlet
+          context={{
+            save,
+            setPageBreadcrumbs,
+            onSaveUpdated: handleSaveUpdated,
+          }}
+        />
       </main>
     </div>
   );

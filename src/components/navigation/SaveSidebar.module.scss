@@ -4,4 +4,117 @@
   @include mixins.glass-panel;
 
   grid-area: sidebar;
+
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+  min-height: 0;
+}
+
+.identity {
+  padding-bottom: 1.25rem;
+
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.eyebrow {
+  display: block;
+
+  color: var(--text-muted);
+  font-size: var(--font-size-tiny);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.saveName {
+  display: block;
+
+  margin-top: 0.35rem;
+
+  overflow: hidden;
+
+  color: var(--text-primary);
+  font-size: var(--font-size-body);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gameName {
+  display: block;
+
+  margin-top: 0.2rem;
+
+  overflow: hidden;
+
+  color: var(--text-secondary);
+  font-size: var(--font-size-small);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.navigation {
+  min-height: 0;
+  margin-top: 1.25rem;
+  overflow-y: auto;
+}
+
+.navigationList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+
+  list-style: none;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  min-height: 42px;
+  padding: 0.65rem 0.75rem;
+
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+
+  color: var(--text-secondary);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+
+  &:hover {
+    background: var(--surface-soft);
+    color: var(--text-primary);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+.active {
+  background: rgba(23, 107, 115, 0.12);
+  border-color: rgba(23, 107, 115, 0.18);
+
+  color: var(--accent);
+  font-weight: var(--font-weight-semibold);
+}
+
+.icon {
+  width: 1.1rem;
+  height: 1.1rem;
+
+  flex-shrink: 0;
+}
+
+.loading {
+  color: var(--text-secondary);
+  font-size: var(--font-size-small);
 }

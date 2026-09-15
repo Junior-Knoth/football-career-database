@@ -7,6 +7,10 @@ import SeasonsPage from "./pages/SeasonsPage/SeasonsPage";
 import PlayersPage from "./pages/PlayersPage/PlayersPage";
 import TransfersPage from "./pages/TransfersPage/TransfersPage";
 import CreateSavePage from "./pages/CreateSavePage/CreateSavePage";
+import ClubsPage from "./pages/ClubsPage/ClubsPage";
+import NationalTeamPage from "./pages/NationalTeamPage/NationalTeamPage";
+import StatisticsPage from "./pages/StatisticsPage/StatisticsPage";
+import ManagerPage from "./pages/ManagerPage/ManagerPage";
 
 function App() {
   return (
@@ -19,8 +23,11 @@ function App() {
         <Route path="seasons" element={<SeasonsPage />} />
 
         <Route path="players" element={<PlayersPage />} />
-
+        <Route path="club" element={<ClubsPage />} />
+        <Route path="national-team" element={<NationalTeamPage />} />
         <Route path="transfers" element={<TransfersPage />} />
+        <Route path="statistics" element={<StatisticsPage />} />
+        <Route path="manager" element={<ManagerPage />} />
       </Route>
     </Routes>
   );

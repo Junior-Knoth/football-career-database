@@ -1,0 +1,20 @@
+.placeholder {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 0.5rem;
+
+  min-height: 100%;
+
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.placeholder h1 {
+  color: var(--text-primary);
+  font-size: var(--font-size-subtitle);
+}
+
+.placeholder p {
+  font-size: var(--font-size-body);
+}

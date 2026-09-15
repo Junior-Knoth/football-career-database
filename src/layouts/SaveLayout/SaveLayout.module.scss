@@ -1,15 +1,27 @@
+@use "../../styles/mixins" as mixins;
+
 .container {
   --page-margin: 1rem;
 
   display: grid;
-  margin: var(--page-margin);
-  gap: 0.5rem;
-  height: calc(100dvh - (var(--page-margin) * 2));
-
   grid-template-areas:
     "sidebar header"
     "sidebar main";
+  grid-template-columns: 16rem minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 0.5rem;
 
-  grid-template-columns: 16rem 1fr;
-  grid-template-rows: auto 1fr;
+  min-height: calc(100dvh - (var(--page-margin) * 2));
+  height: calc(100dvh - (var(--page-margin) * 2));
+  margin: var(--page-margin);
+}
+
+.main {
+  @include mixins.glass-panel;
+
+  grid-area: main;
+
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
 }

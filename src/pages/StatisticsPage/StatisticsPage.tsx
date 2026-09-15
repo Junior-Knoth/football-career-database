@@ -1,3 +1,5 @@
+import SaveWorkspacePlaceholder from "../../components/saves/SaveWorkspacePlaceholder";
+
 export default function StatisticsPage() {
-  return <></>;
+  return <SaveWorkspacePlaceholder title="Statistics" />;
 }
