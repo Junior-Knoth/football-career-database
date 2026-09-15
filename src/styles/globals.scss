@@ -20,25 +20,29 @@
   --text-secondary: #526174;
   --text-muted: rgba(19, 34, 56, 0.55);
 
-  --font-size-title: 2.2rem;
-  --font-size-subtitle: 1.5rem;
-  --font-size-body: 1rem;
-  --font-size-small: 0.875rem;
-  --font-size-tiny: 0.75rem;
+  // Typography — mais densa
+  --font-size-title: 1.65rem;
+  --font-size-subtitle: 1.05rem;
+  --font-size-body: 0.9rem;
+  --font-size-small: 0.8rem;
+  --font-size-tiny: 0.72rem;
 
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 18px;
-  --radius-xl: 24px;
+  // Component scale
+  --control-height: 40px;
 
-  --shadow-sm: 0 6px 18px rgba(19, 34, 56, 0.1);
-  --shadow-md: 0 12px 32px rgba(19, 34, 56, 0.14);
-  --shadow-lg: 0 20px 60px rgba(19, 34, 56, 0.18);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+
+  --shadow-sm: 0 4px 12px rgba(19, 34, 56, 0.08);
+  --shadow-md: 0 8px 24px rgba(19, 34, 56, 0.12);
+  --shadow-lg: 0 16px 40px rgba(19, 34, 56, 0.15);
 
   --transition-fast: 150ms ease;
   --transition-normal: 220ms ease;
@@ -48,31 +52,26 @@
 
   --overlay: rgba(0, 0, 0, 0.55);
 
-  --success: rgba(50, 184, 117, 0.8); /* Verde mais claro e vibrante */
-  --success-hover: rgba(
-    41,
-    158,
-    100,
-    0.8
-  ); /* Ligeiramente mais escuro para o hover */
-  --surface-success: rgba(50, 184, 117, 0.15); /* Fundo sutil */
-  --text-on-success: #ffffff; /* Texto branco para botões sólidos */
+  --success: rgba(50, 184, 117, 0.8);
+  --success-hover: rgba(41, 158, 100, 0.8);
+  --surface-success: rgba(50, 184, 117, 0.15);
+  --text-on-success: #ffffff;
   --text-success: #1b633f;
 
   --danger: #ef5350;
-  --text-on-danger: #ffffff;
   --danger-hover: #c4413d;
   --surface-danger: rgba(217, 83, 79, 0.12);
+  --text-on-danger: #ffffff;
 
   --warning: #f59e0b;
-  --text-on-warning: #ffffff;
   --warning-hover: #c48600;
   --surface-warning: rgba(230, 157, 0, 0.12);
+  --text-on-warning: #ffffff;
 
   --info: #176b73;
-  --text-on-info: #ffffff;
   --info-hover: #10545b;
   --surface-info: rgba(23, 107, 115, 0.12);
+  --text-on-info: #ffffff;
 
   --neutral-action: #6b7c93;
   --neutral-action-hover: #526174;

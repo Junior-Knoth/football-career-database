@@ -1,48 +1,46 @@
 @mixin interactive-card {
-  padding: 1rem 1.2rem;
+  padding: 0.75rem 1rem;
 
   background: var(--surface-soft);
   border-radius: var(--radius-md);
-
   box-shadow: var(--shadow-sm);
 
   color: var(--text-primary);
   text-decoration: none;
+
   cursor: pointer;
 
-  transition: all var(--transition-fast);
+  transition:
+    background var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
 
   &:hover {
-    transform: translateY(-2px);
-
+    transform: translateY(-1px);
     background: var(--surface-hover);
-
     box-shadow: var(--shadow-md);
   }
 
   &:focus-visible {
     outline: 2px solid var(--accent);
-    outline-offset: 3x;
+    outline-offset: 3px;
   }
 }
-
 @mixin glass-panel {
-  padding: 1.5rem;
+  padding: 1.15rem;
 
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
-
   box-shadow: var(--shadow-lg);
 
   backdrop-filter: blur(18px);
 }
-
 @mixin input {
   width: 100%;
-  min-height: 46px;
+  min-height: var(--control-height);
 
-  padding: 0.75rem 2.5rem 0.75rem 0.9rem;
+  padding: 0.6rem 2.25rem 0.6rem 0.8rem;
 
   background: rgba(255, 255, 255, 0.52);
 
@@ -69,34 +67,33 @@
 
   &:focus {
     background: rgba(255, 255, 255, 0.82);
-
     border-color: var(--accent);
-
     box-shadow: 0 0 0 3px rgba(23, 107, 115, 0.12);
   }
 }
-
 @mixin button {
-  min-height: 46px;
+  min-height: var(--control-height);
 
-  padding: 0.75rem 1.5rem;
+  padding: 0.6rem 1.1rem;
 
   background: var(--success);
   border: none;
   border-radius: var(--radius-md);
 
   color: var(--text-on-success);
+
   font: inherit;
-  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-medium);
 
   cursor: pointer;
 
-  transition: all var(--transition-fast);
+  transition:
+    background var(--transition-fast),
+    box-shadow var(--transition-fast);
 
   &:hover {
     background: var(--success-hover);
-    color: var(--text-on-success);
-
     box-shadow: var(--shadow-sm);
   }
 
